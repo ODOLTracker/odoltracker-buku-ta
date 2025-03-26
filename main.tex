@@ -1,6 +1,6 @@
 % Judul dokumen
 \title{Buku Tugas Akhir ITS}
-\author{Musk, Elon Reeve}
+\author{Dhiyya'ul Haq, Ikhwanul Abiyu}
 
 % Pengaturan ukuran teks dan bentuk halaman dua sisi
 \documentclass[12pt,twoside]{report}
@@ -14,6 +14,11 @@
 % Pengaturan detail pada file PDF
 \usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0}]{hyperref}
 
+% Pengaturan algoritma pseudocode
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+
 % Pengaturan jenis karakter
 \usepackage[utf8]{inputenc}
 
@@ -21,7 +26,7 @@
 \usepackage[table,xcdraw]{xcolor}
 
 % Pengaturan kutipan artikel
-\usepackage[style=apa, backend=biber]{biblatex}
+\usepackage[style=ieee, backend=biber]{biblatex}
 
 % Package lainnya
 \usepackage{changepage}
@@ -31,10 +36,17 @@
 \usepackage{etoolbox}
 \usepackage{graphicx}
 \usepackage{lipsum}
+\usepackage{caption}
 \usepackage{longtable}
 \usepackage{tabularx}
 \usepackage{wrapfig}
 \usepackage{float}
+\usepackage{array} % Add this line in the preamble
+\usepackage{multirow}
+
+\captionsetup[longtable]{
+  width=.9\textwidth, % Adjust the width to .9 of the text width or as needed
+}
 
 % Definisi untuk "Hati ini sengaja dikosongkan"
 \patchcmd{\cleardoublepage}{\hbox{}}{
@@ -94,6 +106,7 @@
 \titlespacing{\section}{0ex}{1ex}{0ex}
 \titlespacing{\subsection}{0ex}{0.5ex}{0ex}
 \titlespacing{\subsubsection}{0ex}{0.5ex}{0ex}
+\setcounter{secnumdepth}{3} % Untuk memberi penomoran pada \subsubsection
 
 \input{pustaka/variables.tex}
 
@@ -130,6 +143,7 @@
 % Sampul luar Bahasa Indonesia
 \newcommand\covercontents{sampul/konten-id.tex}
 \input{sampul/sampul-luar.tex}
+\cleardoublepage
 
 % Atur ulang penomoran halaman
 \setcounter{page}{1}
@@ -212,7 +226,7 @@
 \cleardoublepage
 
 % Bab 3 desain dan implementasi
-\input{bab/3-desain-implementasi.tex}
+\input{bab/3-metodologi.tex}
 \cleardoublepage
 
 % Bab 4 pengujian dan analisis

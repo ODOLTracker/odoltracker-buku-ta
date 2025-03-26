@@ -1,0 +1,166 @@
+\chapter{METODOLOGI}
+\label{chap:metodologi}
+
+% Ubah bagian-bagian berikut dengan isi dari metodologi penelitian.
+
+Dalam bab ini, akan dijelaskan metode yang digunakan dalam penelitian ini. Metode yang digunakan meliputi tahapan-tahapan yang dilakukan dalam penelitian ini, seperti pengumpulan data, analisis data, dan pengolahan data. Penjelasan ini akan membantu dalam memahami proses penelitian yang dilakukan.
+
+\section{Blok Diagram}
+
+\begin{figure}[htbp]
+  \centering
+
+  \includegraphics[scale=0.55]{gambar/bab3-block-diagram.png}
+
+  \caption{Blok Diagram Sistem Deteksi Kendaraan Overdimension}
+  \label{fig:blockdiagrammethod}
+\end{figure}
+
+Pada Gambar \ref{fig:blockdiagrammethod}, terdapat blok diagram yang menjelaskan bagian-bagian pengembangan sistem deteksi kendaraan \emph{overdimension} yang terbagi menjadi 3 bagian utama, yaitu \emph{software}, \emph{cloud}, \emph{hardware}. Lalu bagian \emph{software} sendiri terbagi menjadi 3 bagian, yaitu \emph{machine learning}, \emph{backend}, dan aplikasi \emph{mobile}. Berikut adalah penjelasan dari masing-masing bagian blok diagram:
+
+\subsection{\emph{Software - Machine Learning}}
+Pada bagian ini, dilakukan beberapa tahapan, yaitu:
+\begin{enumerate}[nolistsep]
+  \item Akuisisi data
+  \item \emph{Labelling} data
+  \item Praproses data
+  \item Pelatihan data
+\end{enumerate}
+
+\textbf{Akuisisi data} dilakukan dengan mengambil data video dari kendaraan yang melintas. Akuisisi data dilakukan sebanyak 2 kali, yaitu di Jalan Tanjung Perak dan di Gerbang Tol Dupak 1 dan Dupak 2 setelah memperoleh izin ke Dinas Perhubungan selaku pihak yang menangani pelanggaran \emph{overdimension} dan PT. Jasa Marga selaku pengelola jalan tol. Data video yang diambil nantinya akan dipotong-potong menjadi beberapa frame. Frame-frame tersebut akan digunakan sebagai data latih untuk model \emph{machine learning} setelah melewati proses \emph{Labelling}. Gambar \ref{fig:acquisitiondata} menunjukkan proses akuisisi data yang telah dilakukan.
+
+\begin{figure}[htbp]
+  \centering
+
+  \includegraphics[scale=0.07]{gambar/bab3-acquisition-data.png}
+
+  \caption{Proses Akuisisi Data di Jalan Tj. Perak Surabaya}
+  \label{fig:acquisitiondata}
+\end{figure}
+
+Algoritma \emph{pseudocode} untuk pemotongan video menjadi frame dapat dilihat pada Algoritma \ref{alg:pemotonganvideomenjadiframe}.
+
+\begin{algorithm}
+  \caption{Pemotongan Video Menjadi Frame}
+  \label{alg:pemotonganvideomenjadiframe}
+  \begin{algorithmic}[1]
+    \State \textbf{Input:} Video
+    \State \textbf{Output:} Frame
+    \State \textbf{Procedure:}
+    \State \hspace{0.5cm} \textbf{while} \textit{video} \textbf{is playing}:
+    \State \hspace{1cm} \textbf{if} \textit{space key pressed}:
+    \State \hspace{1.5cm} \textit{frame} = \textit{video}.read
+    \State \hspace{1.5cm} \textit{frame}.save(\textit{path})
+    \State \hspace{0.5cm} \textbf{end while}
+  \end{algorithmic}
+\end{algorithm}
+
+\textbf{\emph{Labelling} data} dilakukan dengan memberikan label pada data yang telah diakuisisi. Label yang diberikan adalah jenis kendaraan yang melintas dan apakah kendaraan tersebut termasuk \emph{overdimension} atau tidak. Proses \emph{labelling} ini dilakukan dengan menggunakan aplikasi \emph{Roboflow}. Gambar \ref{fig:labellingdata} menunjukkan proses \emph{labelling} data yang telah dilakukan.
+
+\begin{figure}[h]
+  \centering
+
+  \includegraphics[scale=0.25]{gambar/bab3-labelling-data-nonoverdimension.jpeg}
+  \includegraphics[scale=0.25]{gambar/bab3-labelling-data-overdimension.jpeg}
+
+  \caption{\centering Proses \emph{Labelling} data menggunakan aplikasi \emph{Roboflow}, (atas) Kendaraan Non-\emph{Overdimension}, (bawah) Kendaraan \emph{Overdimension}}
+  \label{fig:labellingdata}
+\end{figure}
+
+\textbf{Praproses data} dilakukan setelah data telah diberi label. Hal ini bertujuan untuk mempersiapkan data yang akan digunakan sebagai data latih pada model \emph{machine learning} dalam hal ini SSD-MobileNet-V2. Pada awalnya data yang telah diberi label akan disesuaikan orientasinya dan di-\emph{resize} ke ukuran 300x300 piksel. Kemudian dilakukan juga augmentasi data dengan cara memberikan \emph{brightness} (kecerahan) sebanyak -12\% hingga 12\% dan \emph{exposure} (paparan) sebanyak -10\% hingga 10\%.
+
+Setelah itu, data akan dibagi menjadi data latih dan data validasi dengan perbandingan 80:20. Gambar \ref{fig:citraasli} menunjukkan citra asli yang akan dipraproses, sedangkan Gambar \ref{fig:preprocessingdata} menunjukkan proses praproses data yang telah dilakukan.
+
+\begin{figure}[h]
+  \centering
+
+  \includegraphics[scale=0.2]{gambar/bab3-citra-asli.jpg}
+  \caption{Data citra sebelum dilakukan praproses}
+  \label{fig:citraasli}
+  
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+
+  \includegraphics[scale=0.45]{gambar/bab3-citra-300x300.jpg}
+  \includegraphics[scale=0.45]{gambar/bab3-citra-300x300-brightness-up.jpg}
+  \includegraphics[scale=0.45]{gambar/bab3-citra-300x300-brightness-down.jpg}
+
+  \caption{\centering Data citra setelah dilakukan praproses, (kiri) setelah di-\emph{resize} ke ukuran 300x300, (tengah) citra 300x300 dengan kecerahan dan paparan naik, (kanan) citra 300x300 dengan kecerahan dan paparan turun}
+  \label{fig:preprocessingdata}
+\end{figure}
+
+\textbf{Pelatihan data} dilakukan setelah data telah dipersiapkan. Data latih yang telah disiapkan akan digunakan untuk melatih model \emph{machine learning} dengan menggunakan \emph{framework} PyTorch. Model yang digunakan adalah SSD-MobileNet-V2 yang telah dilatih sebelumnya (\emph{pre-trained model}) dengan menggunakan dataset COCO. Proses pelatihan ini akan menghasilkan model yang dapat digunakan untuk mendeteksi kendaraan \emph{overdimension}. Gambar \ref{fig:trainingdata} menunjukkan proses pelatihan data yang telah dilakukan.
+
+\subsection{\emph{Hardware}}
+
+Pada bagian ini, dilakukan beberapa tahapan, yaitu:
+\begin{enumerate}[nolistsep]
+  \item Implementasi hasil pelatihan di \emph{Edge Device} di:
+  \begin{enumerate}[nolistsep]
+    \item Jetson Nano, dan
+    \item Beelink Gemini T34
+  \end{enumerate} 
+  \item Desain dan pencetakan wadah alat
+\end{enumerate}
+
+\textbf{Implementasi hasil pelatihan di \emph{Edge Device}} dilakukan setelah model \emph{machine learning} dilatih. Model yang telah dilatih akan diimplementasikan di \emph{Edge Device} yang telah disiapkan, yaitu Jetson Nano dan Beelink Gemini T34. Implementasi ini bertujuan untuk mendeteksi kendaraan \emph{overdimension} secara \emph{real-time} dan mengintegrasikan hasil deteksi dengan sistem yang ada. Gambar \ref{fig:implementationedgedevice} menunjukkan proses implementasi model \emph{machine learning} di \emph{Edge Device} yang telah dilakukan.
+
+\begin{figure}
+  \centering
+
+  \includegraphics[scale=0.4]{gambar/bab3-implementasi-di-jetson.jpeg}
+
+  \caption{\centering Implementasi Model \emph{Machine Learning} di \emph{Edge Device}, (atas) Jetson Nano, (bawah) Beelink Gemini T34}
+  \label{fig:implementationedgedevice}
+\end{figure}
+
+\textbf{Desain dan pencetakan wadah alat} dilakukan setelah model \emph{machine learning} berhasil diimplementasikan di \emph{Edge Device}. Wadah alat ini berfungsi sebagai tempat untuk meletakkan \emph{Edge Device} dan kamera yang digunakan untuk mendeteksi kendaraan \emph{overdimension}. Gambar \ref{fig:designcontainercamera}, \ref{fig:designcontainerjetson}, dan \ref{fig:designcontainerbeelink} masing-masing menunjukkan desain wadah kamera, wadah Jetson Nano, dan wadah Beelink Gemini T34 yang telah dibuat.
+
+\begin{figure}
+  \centering
+
+  \includegraphics[scale=0.16]{gambar/bab3-tampak-depan-case-camera.jpeg}
+  \includegraphics[scale=0.16]{gambar/bab3-tampak-samping-case-camera.jpeg}
+  \includegraphics[scale=0.16]{gambar/bab3-tampak-belakang-case-camera.jpeg}
+
+  \caption{\centering Desain Wadah Kamera, (kiri) Tampak Depan, (tengah) Tampak Samping, (kanan) Tampak Belakang}
+  \label{fig:designcontainercamera}
+\end{figure}
+
+\begin{figure}
+  \centering
+
+  \includegraphics[scale=0.13]{gambar/bab3-tampak-depan-case-jnano.jpeg}
+  \includegraphics[scale=0.13]{gambar/bab3-tampak-samping-case-jnano.jpeg}
+  \includegraphics[scale=0.13]{gambar/bab3-tampak-bawah-case-jnano.jpeg}
+
+  \caption{\centering Desain Wadah Jetson Nano, (kiri) Tampak Depan, (tengah) Tampak Samping, (kanan) Tampak Bawah}
+  \label{fig:designcontainerjetson}
+\end{figure}
+
+Setelah didesain, wadah alat tersebut kemudian dicetak menggunakan printer 3D. Gambar \ref{fig:printcontainer} masing-masing menunjukkan proses pencetakan wadah kamera, wadah Jetson Nano, dan wadah Beelink Gemini T34 yang telah dicetak.
+
+\begin{figure}
+  \centering
+
+  \includegraphics[scale=0.37]{gambar/bab3-case-camera-printed.jpeg}
+  \includegraphics[scale=0.15]{gambar/bab3-case-jnano-printed.jpeg}
+
+  \caption{\centering Hasil Pencetakan Wadah, (kiri) Wadah Kamera, (kanan) Wadah Jetson Nano}
+  \label{fig:printcontainer}
+\end{figure}
+
+\subsection{\emph{Software - Backend}}
+
+% fill with lorem ipsum
+\lipsum[1]
+
+\subsection{\emph{Cloud}}
+
+\lipsum[1]
+
+\subsection{\emph{Software} - Aplikasi \emph{Mobile}}
+
+\lipsum[1]
