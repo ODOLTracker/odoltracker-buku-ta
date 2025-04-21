@@ -154,8 +154,56 @@ Setelah didesain, wadah alat tersebut kemudian dicetak menggunakan printer 3D. G
 
 \subsection{\emph{Software - Backend}}
 
-% fill with lorem ipsum
-\lipsum[1]
+Pada bagian ini, dilakukan beberapa tahapan, yaitu:
+\begin{enumerate}[nolistsep]
+  \item Membuat daftar fitur aplikasi
+  \item Desain basis data
+  \item Desain class diagram
+  \item Implementasi class diagram
+\end{enumerate}
+
+\textbf{Membuat daftar fitur aplikasi} dilakukan untuk menentukan fitur-fitur yang akan ada pada aplikasi, sehingga dapat mempermudah desain basis data dan desain class diagram. Fitur-fitur yang ada pada aplikasi ini adalah:
+\begin{itemize}[nolistsep]
+  \item Pendaftaran akun
+  \item Login
+  \item Dashboard berbeda untuk admin dan operator
+  \item Analitik data
+  \item Notifikasi
+  \item Verifikasi pelanggaran
+  \item Edit profil
+  \item Ubah kata sandi
+  \item Lupa kata sandi
+\end{itemize}
+
+Sehingga dapat disimpulkan bahwa aplikasi ini memiliki 2 jenis pengguna, yaitu admin dan operator. Admin memiliki akses penuh terhadap aplikasi, sedangkan operator hanya dapat mengakses fitur-fitur tertentu saja, contohnya operator tidak bisa mendapatkan semua user yang terdaftar di aplikasi sedangkan admin bisa.
+
+\textbf{Desain basis data} dilakukan untuk menentukan struktur basis data yang akan digunakan pada aplikasi. Basis data yang digunakan adalah basis data \emph{relational} dengan menggunakan \emph{PostgreSQL}. Tabel-tabel yang ada pada basis data ini adalah:
+\begin{itemize}[nolistsep]
+  \item Tabel \emph{Users}
+  \item Tabel \emph{TollGates}
+  \item Tabel \emph{Notifications}
+  \item Tabel \emph{VehicleDetections}
+  \item Tabel \emph{Images}
+\end{itemize}
+
+Gambar \ref{fig:databasedesign} menunjukkan desain basis data yang telah dibuat menggunakan website \emph{dbdiagram.io}. Desain basis data ini menggambarkan relasi antar tabel yang ada pada basis data. Tabel-tabel tersebut memiliki relasi satu sama lain, sehingga dapat saling berhubungan dan mempermudah dalam pengolahan data.
+\begin{figure}[htbp]
+  \centering
+
+  \includegraphics[scale=0.35]{gambar/bab3-desain-database.png}
+
+  \caption{Desain Basis Data}
+  \label{fig:databasedesign}
+\end{figure}
+Dari tabel-tabel yang ada pada basis data tersebut, dapat dilihat bahwa:
+
+\begin{itemize}[nolistsep]
+  \item Tabel \emph{Users} berisi data pengguna aplikasi, baik admin maupun operator. Tabel ini memiliki relasi \emph{one to many} dengan tabel \emph{VehicleDetections} dan \emph{Notifications}
+  \item Tabel \emph{TollGates} berisi data gerbang tol yang ada. Tabel ini memiliki relasi \emph{one to many} dengan tabel \emph{VehicleDetections}
+  \item Tabel \emph{Notifications} berisi data notifikasi yang ada pada aplikasi. Baik notifikasi yang dikirimkan oleh sistem maupun notifikasi yang dikirimkan oleh admin kepada operator.
+  \item Tabel \emph{VehicleDetections} berisi data deteksi kendaraan yang ada pada aplikasi. Di tabel inilah dilakukan verifikasi status dari kendaraan, apakah kendaraan tersebut \emph{overdimension} atau tidak. Tabel ini memiliki relasi \emph{one to many} dengan tabel \emph{Images}
+  \item Tabel \emph{Images} berisi data gambar kendaraan \emph{overdimension} yang terdeteksi. Gambar tidak disimpan dalam basis data, tetapi hanya menyimpan \emph{link} gambar yang ada pada \emph{cloud storage} Cloudinary.
+\end{itemize}
 
 \subsection{\emph{Cloud}}
 
