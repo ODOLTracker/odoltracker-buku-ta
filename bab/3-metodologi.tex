@@ -190,7 +190,7 @@ Gambar \ref{fig:databasedesign} menunjukkan desain basis data yang telah dibuat 
 \begin{figure}[htbp]
   \centering
 
-  \includegraphics[scale=0.35]{gambar/bab3-desain-database.png}
+  \includegraphics[scale=0.37]{gambar/bab3-desain-database.png}
 
   \caption{Desain Basis Data}
   \label{fig:databasedesign}
@@ -205,10 +205,66 @@ Dari tabel-tabel yang ada pada basis data tersebut, dapat dilihat bahwa:
   \item Tabel \emph{Images} berisi data gambar kendaraan \emph{overdimension} yang terdeteksi. Gambar tidak disimpan dalam basis data, tetapi hanya menyimpan \emph{link} gambar yang ada pada \emph{cloud storage} Cloudinary.
 \end{itemize}
 
+\textbf{Desain class diagram} dilakukan untuk menentukan struktur class yang akan digunakan pada aplikasi. Class diagram ini menggambarkan relasi antar class yang ada pada aplikasi. Class-class tersebut memiliki relasi satu sama lain, sehingga dapat saling berhubungan dan mempermudah dalam pengolahan data. Gambar \ref{fig:classdiagram} menunjukkan desain class diagram yang telah dibuat menggunakan website \emph{app.diagrams.net}.
+
+\begin{figure}[htbp]
+  \centering
+
+  \includegraphics[scale=0.6]{gambar/bab3-class-diagram.png}
+
+  \caption{Desain \emph{Class Diagram}}
+  \label{fig:classdiagram}
+\end{figure}
+Dari class-class yang ada pada class diagram tersebut, dapat dilihat bahwa:
+\begin{itemize}[nolistsep]
+  \item Class \emph{User} berisi data pengguna aplikasi, baik admin maupun operator. Class ini memiliki relasi \emph{one to many} dengan class \emph{VehicleDetection} dan \emph{Notification}
+  \item Class \emph{TollGate} berisi data gerbang tol yang ada. Class ini memiliki relasi \emph{one to many} dengan class \emph{VehicleDetection}
+  \item Class \emph{Notification} berisi data notifikasi yang ada pada aplikasi. Baik notifikasi yang dikirimkan oleh sistem maupun notifikasi yang dikirimkan oleh admin kepada operator.
+  \item Class \emph{VehicleDetection} berisi data deteksi kendaraan yang ada pada aplikasi. Di class inilah dilakukan verifikasi status dari kendaraan, apakah kendaraan tersebut \emph{overdimension} atau tidak. Class ini memiliki relasi \emph{one to many} dengan class \emph{Image}
+  \item Class \emph{Image} berisi data gambar kendaraan \emph{overdimension} yang terdeteksi. Gambar tidak disimpan dalam basis data, tetapi hanya menyimpan \emph{link} gambar yang ada pada \emph{cloud storage} Cloudinary.
+\end{itemize}
+
+\textbf{Implementasi class diagram} dilakukan setelah class diagram selesai dibuat. Class-class yang ada pada class diagram akan diimplementasikan ke dalam kode program. Kode program ini ditulis menggunakan bahasa pemrograman JavaScript dengan \emph{framework} Express.js, \emph{ORM} Sequelize, dan \emph{cloud storage} Cloudinary. Kode program ini akan digunakan untuk mengelola data yang ada pada basis data, serta mengelola data yang ada pada \emph{cloud storage} Cloudinary. Setelah \emph{endpoint} selesai dibuat, masing-masing \emph{endpoint} akan di-\emph{test} menggunakan \emph{Postman} untuk memastikan bahwa \emph{endpoint} tersebut dapat berjalan dengan baik. Gambar \ref{fig:implementationclassdiagram} menunjukkan implementasi class diagram yang telah dilakukan.
+
+\begin{figure}[htbp]
+  \centering
+
+  \includegraphics[scale=0.45]{gambar/bab3-implementasi-class-diagram.jpeg}
+
+  \caption{Implementasi \emph{Class Diagram} menggunakan \emph{Express.js} dan \emph{Sequelize}}
+  \label{fig:implementationclassdiagram}
+\end{figure}
+
 \subsection{\emph{Cloud}}
 
-\lipsum[1]
+Pada bagian ini, dilakukan beberapa tahapan, yaitu:
+\begin{enumerate}[nolistsep]
+  \item Implementasi basis data di \emph{cloud}
+  \item Implementasi \emph{backend} di \emph{cloud}
+\end{enumerate}
+
+\textbf{Implementasi basis data di \emph{cloud}} dilakukan setelah desain basis data selesai dilakukan. Basis data yang ada pada desain basis data akan diimplementasikan ke \emph{cloud} yang bertujuan agar basis data dapat diakses kapan saja dan di mana saja. Basis data ini diimplementasikan menggunakan \emph{cloud database} PostgreSQL dengan bantuan \emph{management tool} pgAdmin4.
+
+\textbf{Implementasi \emph{backend} di \emph{cloud}} dilakukan setelah implementasi basis data selesai dilakukan. \emph{Backend} yang ada pada desain class diagram akan diimplementasikan ke cloud yang bertujuan agar fungsi \emph{backend} dapat diakses kapan saja dan di mana saja. \emph{Backend} ini diimplementasikan menggunakan \emph{Virtual Private Server} dengan menggunakan \emph{cloud} \emph{platform} Biznet Gio Neo Lite. Gambar \ref{fig:implementationbackend} menunjukkan implementasi \emph{backend} yang telah dilakukan.
+
+
+\begin{figure}[htbp]
+  \centering
+
+  \includegraphics[scale=0.45]{gambar/bab3-implementasi-backend.jpeg}
+  \includegraphics[scale=0.45]{gambar/bab3-implementasi-backend-2.jpeg}
+
+  \caption{\centering Implementasi \emph{backend} di \emph{cloud}, (atas) \emph{web server backend} menggunakan Apache2, (bawah) \emph{backend} berjalan di atas \emph{process manager} PM2}
+  \label{fig:implementationbackend}
+\end{figure}
 
 \subsection{\emph{Software} - Aplikasi \emph{Mobile}}
 
-\lipsum[1]
+Pada bagian ini, dilakukan beberapa tahapan, yaitu:
+\begin{enumerate}[nolistsep]
+  \item Desain \textit{Wireframe} dan \textit{Mockup}
+  \item Pembuatan \emph{prototype} aplikasi
+  \item Integrasi \emph{backend} dengan aplikasi
+  \item Implementasi aplikasi
+\end{enumerate}
+
