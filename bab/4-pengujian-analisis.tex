@@ -363,26 +363,26 @@ Berdasarkan analisis dari grafik-grafik yang ada, dapat disimpulkan bahwa secara
 Evaluasi model dilakukan pada dataset validasi untuk menilai kemampuan generalisasi model dalam mendeteksi objek yang belum pernah dilihat sebelumnya. Metrik utama yang digunakan adalah Mean Average Precision (mAP), yang merupakan rata-rata dari Average Precision (AP) untuk setiap kelas. mAP dapat dihitung dengan persamaan \ref{eq:mAP}.
 
 \begin{equation}
-\text{mAP} = \frac{1}{N} \sum_{i=1}^{N} \text{AP}_i
+\mbox{mAP} = \frac{1}{N} \sum_{i=1}^{N} \mbox{AP}_i
 \label{eq:mAP}
 \end{equation}
 
-Dimana $N$ adalah jumlah kelas dan $\text{AP}_i$ adalah Average Precision untuk kelas ke-$i$. Average Precision sendiri dihitung berdasarkan area di bawah kurva Precision-Recall, yang dapat dirumuskan sebagai:
+Dimana $N$ adalah jumlah kelas dan $\mbox{AP}_i$ adalah Average Precision untuk kelas ke-$i$. Average Precision sendiri dihitung berdasarkan area di bawah kurva Precision-Recall, yang dapat dirumuskan sebagai:
 
 \begin{equation}
-\text{AP} = \sum_{k=1}^{n} P(k) \Delta r(k)
+\mbox{AP} = \sum_{k=1}^{n} P(k) \Delta r(k)
 \label{eq:AP}
 \end{equation}
 
 Dimana $P(k)$ adalah precision pada threshold ke-$k$, dan $\Delta r(k)$ adalah perubahan recall dari threshold ke-$(k-1)$ ke threshold ke-$k$. Precision dan recall dihitung dengan persamaan berikut:
 
 \begin{equation}
-\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
+\mbox{Precision} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FP}}
 \label{eq:precision}
 \end{equation}
 
 \begin{equation}
-\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+\mbox{Recall} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}}
 \label{eq:recall}
 \end{equation}
 
@@ -391,20 +391,20 @@ Dimana TP (True Positive) adalah jumlah deteksi yang benar, FP (False Positive) 
 Perhitungan mAP untuk model terbaik (50 \emph{epoch} dengan \emph{CosineAnnealingLR}) dilakukan sebagai berikut:
 
 \begin{itemize}
-  \item Kelas Car: $\text{AP}_{\text{car}} = 1.000$
-  \item Kelas Truck: $\text{AP}_{\text{truck}} = 1.000$
-  \item Kelas Overdimension: $\text{AP}_{\text{overdimension}} = 0.636$
+  \item Kelas Car: $\mbox{AP}_{\mbox{car}} = 1.000$
+  \item Kelas Truck: $\mbox{AP}_{\mbox{truck}} = 1.000$
+  \item Kelas Overdimension: $\mbox{AP}_{\mbox{overdimension}} = 0.636$
 \end{itemize}
 
 Dengan menggunakan persamaan \ref{eq:mAP}, nilai mAP dapat dihitung sebagai berikut:
 
-\begin{align}
-\text{mAP} &= \frac{1}{N} \sum_{i=1}^{N} \text{AP}_i \\
-&= \frac{1}{3} (\text{AP}_{\text{car}} + \text{AP}_{\text{truck}} + \text{AP}_{\text{overdimension}}) \\
-&= \frac{1}{3} (1.000 + 1.000 + 0.636) \\
-&= \frac{1}{3} \times 2.636 \\
-&= 0.879
-\end{align}
+\begin{eqnarray}
+\mbox{mAP} &=& \frac{1}{N} \sum_{i=1}^{N} \mbox{AP}_i \nonumber \\
+&=& \frac{1}{3} (\mbox{AP}_{\mbox{car}} + \mbox{AP}_{\mbox{truck}} + \mbox{AP}_{\mbox{overdimension}}) \nonumber \\
+&=& \frac{1}{3} (1.000 + 1.000 + 0.636) \nonumber \\
+&=& \frac{1}{3} \times 2.636 \nonumber \\
+&=& 0.879
+\end{eqnarray}
 
 Dari hasil evaluasi untuk model dengan konfigurasi terbaik, diperoleh nilai mAP sebesar 0,879, dengan rincian AP untuk setiap kelas sebagai berikut:
 
