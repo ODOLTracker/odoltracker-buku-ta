@@ -110,13 +110,13 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
 \begin{figure}
   \centering
 
-  \includegraphics[scale=0.4]{gambar/bab3-implementasi-di-jetson.jpeg}
+  \includegraphics[scale=0.27]{gambar/bab3-implemetasi-di-jetson.png}
 
   \caption{\centering Implementasi Model \emph{Machine Learning} di \emph{Edge Device}, (atas) Jetson Nano, (bawah) Beelink Gemini T34}
   \label{fig:implementationedgedevice}
 \end{figure}
 
-\textbf{Desain dan pencetakan wadah alat} dilakukan setelah model \emph{machine learning} berhasil diimplementasikan di \emph{Edge Device}. Wadah alat ini berfungsi sebagai tempat untuk meletakkan \emph{Edge Device} dan kamera yang digunakan untuk mendeteksi kendaraan \emph{overdimension}. Gambar \ref{fig:designcontainercamera}, \ref{fig:designcontainerjetson}, dan \ref{fig:designcontainerbeelink} masing-masing menunjukkan desain wadah kamera, wadah Jetson Nano, dan wadah Beelink Gemini T34 yang telah dibuat.
+\textbf{Desain dan pencetakan wadah alat} dilakukan setelah model \emph{machine learning} berhasil diimplementasikan di \emph{Edge Device}. Wadah alat ini berfungsi sebagai tempat untuk meletakkan \emph{Edge Device} dan kamera yang digunakan untuk mendeteksi kendaraan \emph{overdimension}. Gambar \ref{fig:designcontainercamera} dan \ref{fig:designcontainerjetson} masing-masing menunjukkan desain wadah kamera dan wadah Jetson Nano yang telah dibuat. Untuk Beelink Gemini T34, setelah dilakukan pengujian lebih lanjut, ditemukan bahwa perangkat ini memiliki keterbatasan dalam melakukan inferensi model secara real-time karena hanya mengandalkan CPU. Meskipun telah dilakukan optimasi, performa inferensi tetap tidak memadai untuk aplikasi deteksi real-time, sehingga pengembangan wadah khusus untuk perangkat ini tidak dilanjutkan.
 
 \begin{figure}
   \centering
@@ -246,7 +246,6 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
 \textbf{Implementasi basis data di \emph{cloud}} dilakukan setelah desain basis data selesai dilakukan. Basis data yang ada pada desain basis data akan diimplementasikan ke \emph{cloud} yang bertujuan agar basis data dapat diakses kapan saja dan di mana saja. Basis data ini diimplementasikan menggunakan \emph{cloud database} PostgreSQL dengan bantuan \emph{management tool} pgAdmin4.
 
 \textbf{Implementasi \emph{backend} di \emph{cloud}} dilakukan setelah implementasi basis data selesai dilakukan. \emph{Backend} yang ada pada desain class diagram akan diimplementasikan ke cloud yang bertujuan agar fungsi \emph{backend} dapat diakses kapan saja dan di mana saja. \emph{Backend} ini diimplementasikan menggunakan \emph{Virtual Private Server} dengan menggunakan \emph{cloud} \emph{platform} Biznet Gio Neo Lite. Gambar \ref{fig:implementationbackend} menunjukkan implementasi \emph{backend} yang telah dilakukan.
-
 
 \begin{figure}[htbp]
   \centering
