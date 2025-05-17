@@ -18,17 +18,38 @@ Hasil yang didapatkan yaitu FPS yang lebih tinggi cenderung menurunkan akurasi, 
 
 \subsection{Sistem Deteksi Kendaraan \emph{Overdimension} secara \emph{Real-time} menggunakan \emph{Deep Learning} di Jalan Raya}
 \label{subsec:deteksikendaraanoverdimensionhamayan}
-Penelitian ini dilakukan oleh Ahmad Hamayan Nabih \parencite*{hamayan2024}. Penelitian ini bertujuan untuk mengembangkan sistem deteksi kendaraan overdimension secara \emph{real-time} menggunakan deep learning di jalan raya. Sistem ini menggunakan model YOLOv8 yang telah dimodifikasi untuk mendeteksi kendaraan overdimension. \emph{Dataset} yang digunakan adalah \emph{dataset} yang telah diambil dari jalan raya di Indonesia. Variasi yang digunakan yaitu variasi akurasi pada berbagai macam perangkat dan model YOLOv8.
+Penelitian ini dilakukan oleh Ahmad Hamayan Nabih \parencite*{hamayan2024}. Penelitian ini bertujuan untuk mengembangkan sistem deteksi kendaraan overdimension secara \emph{real-time} menggunakan \emph{deep learning} di jalan raya. Sistem ini menggunakan model YOLOv8 yang telah dimodifikasi untuk mendeteksi kendaraan \emph{overdimension}. \emph{Dataset} yang digunakan adalah \emph{dataset} yang telah diambil dari jalan raya di Indonesia. Variasi yang digunakan yaitu variasi akurasi pada berbagai macam perangkat dan model YOLOv8.
 
-Variasi perangkat meliputi PC dengan External VGA NVIDIA GeForce GTX 1650Ti, Laptop tanpa External VGA, dan Intel NUC i5 Gen 11. Hasil yang didapatkan yaitu PC dengan External VGA NVIDIA GeForce GTX 1650Ti mampu mendeteksi kendaraan overdimension dengan akurasi 85\% - 90\% pada 33 FPS - 63 FPS, Laptop tanpa External VGA dengan akurasi 87\% - 92\% pada 7 FPS - 10 FPS, dan Intel NUC i5 Gen 11 dengan akurasi 79\% - 90\% pada 2 FPS. Sedangkan variasi model YOLOv8 meliputi YOLOv8n dan YOLOv8s, dimana YOLOv8n di-\emph{training} dengan 50 \emph{epoch} dan YOLOv8s di-\emph{training} dengan 75 \emph{epoch}.
+Variasi perangkat meliputi PC dengan \emph{External VGA} NVIDIA GeForce GTX 1650Ti, Laptop tanpa \emph{External VGA}, dan Intel NUC i5 Gen 11. Hasil yang didapatkan yaitu PC dengan \emph{External VGA} NVIDIA GeForce GTX 1650Ti mampu mendeteksi kendaraan \emph{overdimension} dengan akurasi 85\% - 90\% pada 33 FPS - 63 FPS, Laptop tanpa \emph{External VGA} dengan akurasi 87\% - 92\% pada 7 FPS - 10 FPS, dan Intel NUC i5 Gen 11 dengan akurasi 79\% - 90\% pada 2 FPS. Sedangkan variasi model YOLOv8 meliputi YOLOv8n dan YOLOv8s, dimana YOLOv8n di-\emph{training} dengan 50 \emph{epoch} dan YOLOv8s di-\emph{training} dengan 75 \emph{epoch}.
 
-Kesimpulan yang didapatkan yaitu model YOLOv8n lebih baik dari segi FPS dibandingkan dengan YOLOv8s namun memiliki akurasi yang lebih rendah. Sedangkan model pembandingnya, yaitu YOLOv8s memiliki akurasi yang lebih tinggi namun FPS yang lebih rendah. Kemudian juga ditemukan bahwa perangkat dengan spesifikasi yang lebih tinggi mampu mendeteksi kendaraan overdimension dengan akurasi yang lebih tinggi dan FPS yang lebih tinggi.
+Kesimpulan yang didapatkan yaitu model YOLOv8n lebih baik dari segi FPS dibandingkan dengan YOLOv8s namun memiliki akurasi yang lebih rendah. Sedangkan model pembandingnya, yaitu YOLOv8s memiliki akurasi yang lebih tinggi namun FPS yang lebih rendah. Kemudian juga ditemukan bahwa perangkat dengan spesifikasi yang lebih tinggi mampu mendeteksi kendaraan \emph{overdimension} dengan akurasi yang lebih tinggi dan FPS yang lebih tinggi.
 
 \subsection{Implementasi Sistem Penghitung Kendaraan Otomatis Berbasis \emph{Computer Vision}}
 \label{subsec:implementasisistemhitungkendaraan}
 Penelitian ini dilakukan oleh Dolly Indra et al. \parencite*{dolly2023}. Penelitian ini bertujuan untuk mengembangkan sistem penghitung kendaraan otomatis di tempat pencucian kendaraan. Sistem ini menggunakan Raspberry Pi 4 sebagai \emph{edge device} dan model SSD MobileNet V2 sebagai model deteksi. Sistem ini mampu menghitung jumlah kendaraan yang masuk dan keluar dari tempat pencucian kendaraan secara \emph{real-time} yang terhubung dengan aplikasi \emph{mobile}.
 
 Hasil yang didapatkan yaitu sistem otomatis mampu mendeteksi kendaraan mobil dan motor dengan rata-rata tingkat akurasi sebesar 46,6 \% dan aplikasi yang terdapat pada \emph{smartphone} mampu menghitung jumlah kendaraan yang masuk dan keluar dari tempat pencucian kendaraan.
+
+\subsection{\emph{Fast Vehicle Detection Algorithm in Traffic Scene Based on Improved SSD}}
+\label{subsec:fastvehicledetectionalgorithm}
+
+Penelitian ini dilakukan oleh Zhichao Chen et al. \parencite*{Chen2022Fast} mengusulkan peningkatan pada algoritma Single Shot Multibox Detector (SSD) untuk deteksi kendaraan di lingkungan lalu lintas yang kompleks. Inovasi utama adalah penggunaan MobileNet v2 sebagai backbone, menggantikan VGG16 yang lebih berat secara komputasi. Selain itu, ditambahkan channel attention mechanism (SE module) untuk memperkuat fitur penting dan modul dekonvolusi untuk melakukan bottom–top feature fusion, sehingga informasi semantik pada fitur dangkal dapat diperbaiki.
+
+Hasil eksperimen menunjukkan rata-rata presisi (AP) sebesar 82,59\% pada dataset publik BDD100K dan 84,83\% pada KITTI. Waktu inferensi per gambar hanya 73 ms, sekitar 5/11 dari waktu model SSD orisinal, sehingga terjadi peningkatan baik pada kecepatan maupun akurasi. Penelitian ini menegaskan bahwa kombinasi backbone ringan, mekanisme atensi, dan fusi fitur dapat menghasilkan deteksi kendaraan yang efisien dan akurat, sangat relevan untuk aplikasi real-time dan perangkat dengan sumber daya terbatas
+
+\subsection{\emph{Edge Intelligence Empowered Vehicle Detection and Image Segmentation for Autonomous Vehicles}}
+\label{subsec:edgeintelligenceempoweredvehicledetection}
+
+Penelitian ini dilakukan oleh Zhinchao Chen et al. \parencite*{Chen2023Edge}mengembangkan pendekatan \emph{edge intelligence} untuk deteksi kendaraan dan segmentasi citra pada sistem transportasi cerdas dan kendaraan otonom. \emph{Edge intelligence} menggabungkan kecerdasan buatan dan \emph{edge computing} untuk memproses data secara lokal di dekat sumber data, sehingga mengurangi latensi, menghemat sumber daya transmisi, meningkatkan keamanan data, dan mengoptimalkan pemanfaatan sumber daya antara perangkat, edge, dan cloud.
+
+Inovasi utama dari penelitian ini adalah deteksi kendaraan berbasis improved YOLOv4 dimana Peneliti mengintegrasikan \emph{Efficient Channel Attention} (ECA) ke dalam modul konvolusi YOLOv4 dan menambahkan \emph{High-Resolution Network} (HRNet) untuk meningkatkan kemampuan deteksi kendaraan, khususnya pada edge device yang memiliki keterbatasan sumber daya komputasi. Kemudian juga segmentasi citra berbasis improved DeepLabv3+ dimana peneliti Model DeepLabv3+ dimodifikasi dengan mengganti backbone menjadi MobileNetV2 dan menggunakan metode \emph{softpool} untuk mengurangi kehilangan informasi saat segmentasi, sehingga ukuran jaringan lebih kecil dan akurasi segmentasi meningkat.
+
+Hasil dari penelitian ini yaitu:
+\begin{itemize}[nolistsep]
+  \item Akurasi deteksi kendaraan meningkat dari 82,03\% menjadi 86,22\% (Average Precision/AP).
+  \item Akurasi segmentasi citra (mean Intersection over Union/mIoU) naik dari 73,32\% menjadi 75,63\%.
+\end{itemize}
+Model yang diusulkan dapat berjalan efisien pada edge device, mendukung kebutuhan \emph{real-time} dan penghematan bandwidth.
 
 \section{Teori/Konsep Dasar}
 \label{sec:teorikonsepdasar}
@@ -240,22 +261,22 @@ Beelink Gemini T34 adalah mini PC yang dilengkapi dengan prosesor Intel Apollo L
 
 Beelink Gemini T34 dapat digunakan sebagai \emph{edge device} untuk menjalankan model deteksi objek secara \emph{real-time}. Mini PC ini memiliki performa yang cukup untuk menjalankan aplikasi deteksi objek dengan akurasi tinggi dan latensi rendah. Dengan konektivitas Wi-Fi dan Bluetooth, Beelink Gemini T34 dapat terhubung ke jaringan lokal dan perangkat lain untuk mentransfer data deteksi objek. Dengan demikian, Beelink Gemini T34 merupakan solusi yang ideal untuk implementasi \emph{edge computing} dalam deteksi objek pada video pengamatan jalan raya.
 
-\subsection{MQTT (\emph{Message Queuing Telemetry Transport})}
+% \subsection{MQTT (\emph{Message Queuing Telemetry Transport})}
 
-MQTT (\emph{Message Queuing Telemetry Transport}) adalah protokol komunikasi yang ringan dan efisien untuk pertukaran pesan antara perangkat. MQTT dirancang untuk digunakan dalam kondisi jaringan yang tidak stabil atau berkapasitas rendah, seperti pada perangkat IoT atau \emph{edge device}.
+% MQTT (\emph{Message Queuing Telemetry Transport}) adalah protokol komunikasi yang ringan dan efisien untuk pertukaran pesan antara perangkat. MQTT dirancang untuk digunakan dalam kondisi jaringan yang tidak stabil atau berkapasitas rendah, seperti pada perangkat IoT atau \emph{edge device}.
 
-MQTT menggunakan model \emph{publish-subscribe} yang memungkinkan perangkat untuk berkomunikasi secara asinkron. Dalam model ini, perangkat yang mengirim pesan disebut \emph{publisher}, sedangkan perangkat yang menerima pesan disebut \emph{subscriber}. Pesan dikirim ke topik tertentu dan dapat diterima oleh satu atau lebih \emph{subscriber} yang berlangganan topik tersebut.
+% MQTT menggunakan model \emph{publish-subscribe} yang memungkinkan perangkat untuk berkomunikasi secara asinkron. Dalam model ini, perangkat yang mengirim pesan disebut \emph{publisher}, sedangkan perangkat yang menerima pesan disebut \emph{subscriber}. Pesan dikirim ke topik tertentu dan dapat diterima oleh satu atau lebih \emph{subscriber} yang berlangganan topik tersebut.
 
-Keunggulan utama dari MQTT adalah kemampuannya untuk mengirim pesan secara efisien dan andal di berbagai kondisi jaringan. MQTT menggunakan protokol TCP/IP yang ringan dan memiliki overhead yang rendah, sehingga cocok untuk digunakan pada perangkat dengan sumber daya terbatas. Selain itu, MQTT juga mendukung koneksi yang tahan lama dan \emph{quality of service} (QoS) yang dapat disesuaikan.
+% Keunggulan utama dari MQTT adalah kemampuannya untuk mengirim pesan secara efisien dan andal di berbagai kondisi jaringan. MQTT menggunakan protokol TCP/IP yang ringan dan memiliki overhead yang rendah, sehingga cocok untuk digunakan pada perangkat dengan sumber daya terbatas. Selain itu, MQTT juga mendukung koneksi yang tahan lama dan \emph{quality of service} (QoS) yang dapat disesuaikan.
 
-Dalam penelitian ini, MQTT digunakan sebagai protokol komunikasi antara \emph{edge device} dan \emph{cloud} untuk mentransfer data deteksi objek secara \emph{real-time}. MQTT memungkinkan perangkat untuk berkomunikasi secara efisien dan responsif tanpa memerlukan koneksi internet yang stabil. \parencite*{mqtts2008}
+% Dalam penelitian ini, MQTT digunakan sebagai protokol komunikasi antara \emph{edge device} dan \emph{cloud} untuk mentransfer data deteksi objek secara \emph{real-time}. MQTT memungkinkan perangkat untuk berkomunikasi secara efisien dan responsif tanpa memerlukan koneksi internet yang stabil. \parencite*{mqtts2008}
 
 \subsection{RESTful API}
 
 RESTful API (\emph{Representational State Transfer Application Programming Interface}) adalah arsitektur desain yang digunakan untuk membangun layanan web yang ringan, fleksibel, dan mudah diakses. RESTful API menggunakan prinsip REST yang memisahkan antara data dan tampilan, serta memanfaatkan metode HTTP untuk berkomunikasi antara klien dan server.
 
 RESTful API menggunakan 4 metode HTTP utama untuk berinteraksi dengan \emph{resource}:
-\begin{itemize}
+\begin{itemize}[nolistsep]
   \item \textbf{GET}: Mengambil data dari \emph{resource}.
   \item \textbf{POST}: Membuat data baru di \emph{resource}.
   \item \textbf{PUT}: Memperbarui data yang ada di \emph{resource}.
@@ -285,3 +306,39 @@ Keunggulan utama dari PostgreSQL adalah keandalan, fleksibilitas, dan skalabilit
 PostgreSQL juga memiliki dukungan yang baik untuk pengelolaan data dalam skala besar. PostgreSQL mendukung indeks, partisi, dan \emph{replication} untuk meningkatkan kinerja dan ketersediaan sistem. Selain itu, PostgreSQL juga memiliki fitur keamanan yang kuat seperti autentikasi, otorisasi, dan enkripsi data.
 
 Dalam penelitian ini, PostgreSQL digunakan sebagai basis data untuk menyimpan data deteksi objek dan data pengguna. PostgreSQL akan digunakan untuk menyimpan informasi tentang objek yang terdeteksi, lokasi deteksi, dan waktu deteksi. Basis data ini akan digunakan oleh aplikasi Flutter untuk menampilkan data deteksi objek dan memungkinkan pengguna untuk melihat riwayat deteksi objek.
+
+\subsection{Express.js}
+
+Express.js adalah kerangka kerja web \emph{back-end} untuk Node.js yang minimalis dan fleksibel. Express.js menyediakan serangkaian fitur untuk membangun aplikasi web dan API dengan cepat dan mudah. Express.js menggunakan pendekatan \emph{middleware} yang memungkinkan pengembang untuk menambahkan fungsionalitas secara modular ke dalam aplikasi. \parencite*{expressjs2024}
+
+Keunggulan utama Express.js meliputi:
+\begin{itemize}[nolistsep]
+  \item \textbf{Minimalis dan Fleksibel}: Express.js menyediakan fitur dasar yang diperlukan untuk membangun aplikasi web tanpa memaksakan struktur atau konvensi tertentu.
+  \item \textbf{\emph{Middleware}}: Sistem \emph{middleware} memungkinkan pengembang untuk menambahkan fungsionalitas seperti \emph{logging}, autentikasi, dan penanganan kesalahan secara modular.
+  \item \textbf{\emph{Routing}}: Express.js menyediakan sistem \emph{routing} yang kuat untuk menangani permintaan HTTP dengan berbagai metode dan parameter.
+  \item \textbf{\emph{Template Engine}}: Mendukung berbagai \emph{template engine} untuk menghasilkan tampilan HTML dinamis.
+\end{itemize}
+
+\subsection{Apache HTTP Server}
+
+Apache HTTP Server (Apache2) adalah server web \emph{open-source} yang paling banyak digunakan di dunia. Apache2 dikembangkan dan dikelola oleh Apache Software Foundation dan mendukung berbagai platform sistem operasi. Server ini dikenal karena kehandalannya, fleksibilitas konfigurasi, dan ekosistem modul yang luas. \parencite*{apache2024}
+
+Fitur utama Apache2 meliputi:
+\begin{itemize}[nolistsep]
+  \item \textbf{\emph{Virtual Hosting}}: Kemampuan untuk menjalankan beberapa situs web pada satu server.
+  \item \textbf{Modul Dinamis}: Mendukung penambahan dan penghapusan modul tanpa mengompilasi ulang server.
+  \item \textbf{Keamanan}: Menyediakan fitur keamanan seperti SSL/TLS, autentikasi, dan otorisasi.
+  \item \textbf{\emph{Reverse Proxy}}: Dapat berfungsi sebagai \emph{reverse proxy} untuk mendistribusikan beban dan meningkatkan keamanan.
+\end{itemize}
+
+\subsection{PM2 (Process Manager 2)}
+
+PM2 adalah manajer proses untuk aplikasi Node.js yang memungkinkan pengembang untuk mengelola dan mempertahankan aplikasi tetap berjalan di lingkungan produksi. PM2 menyediakan fitur-fitur penting seperti load balancing, monitoring, dan manajemen log untuk memastikan ketersediaan dan kinerja aplikasi. \parencite*{pm22024}
+
+Keunggulan utama PM2 meliputi:
+\begin{itemize}[nolistsep]
+  \item \textbf{\emph{Process Management}}: Kemampuan untuk menjalankan aplikasi dalam mode daemon, restart otomatis saat crash, dan update tanpa downtime.
+  \item \textbf{\emph{Load Balancing}}: Mendistribusikan beban di antara beberapa instance aplikasi untuk meningkatkan throughput.
+  \item \textbf{\emph{Monitoring}}: Menyediakan dashboard untuk memantau penggunaan CPU, memori, dan metrik lainnya secara real-time.
+  \item \textbf{\emph{Log Management}}: Mengelola dan merotasi file log untuk mencegah penggunaan disk yang berlebihan.
+\end{itemize}

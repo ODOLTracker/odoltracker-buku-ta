@@ -6,29 +6,43 @@
 \section{Kesimpulan}
 \label{sec:kesimpulan}
 
-Berdasarkan hasil pengujian yang \lipsum[1][1-3] sebagai berikut:
+Berdasarkan hasil penelitian, pengembangan, dan pengujian sistem deteksi kendaraan overdimensi berbasis edge computing dan integrasi cloud, dapat ditarik beberapa kesimpulan sebagai berikut:
 
 \begin{enumerate}[nolistsep]
 
-  \item Pembuatan \lipsum[2][1-3]
+  \item Model deteksi berbasis SSD-MobileNetV2 yang dilatih dengan \emph{dataset} kendaraan menunjukkan performa yang baik dengan nilai mAP 0.805. Performa terbaik dicapai dengan konfigurasi 50 \emph{epoch} dan \emph{scheduler} CosineAnnealingLR, dengan AP untuk kelas normal sebesar 0.879 dan kelas \emph{overdimensi} sebesar 0.732.
 
-  \item \lipsum[2][4-6]
+  \item Perbandingan perangkat \emph{edge} menunjukkan bahwa NVIDIA Jetson Nano memberikan performa yang jauh lebih baik dibandingkan Beelink Gemini T34, dengan kecepatan inferensi mencapai 46.86 FPS (1191.5\% lebih tinggi) dan penggunaan CPU yang lebih efisien (12.9-75.5\% vs 93.2-100\%). Hal ini menunjukkan pentingnya akselerasi GPU dalam implementasi deteksi \emph{real-time}.
 
-  \item \lipsum[2][7-10]
+  \item Sistem berhasil melakukan integrasi antara komponen \emph{edge} dan \emph{cloud} dengan tingkat keberhasilan transfer data mencapai 100\%, meskipun terdapat keterbatasan \emph{bandwidth} pada koneksi \emph{hotspot} 3-5 Mbps yang digunakan selama pengujian. Sistem ini membutuhkan \emph{bandwidth} yang relatif rendah (4 KB/s) dibandingkan implementasi sejenis.
+
+  \item Akurasi deteksi keseluruhan mencapai 80.72\%, dengan \emph{false positive rate} sebesar 7.22\% dan \emph{false negative rate} sebesar 10.84\%, memenuhi target yang ditetapkan untuk implementasi di lingkungan gerbang tol.
+  
+  \item Dibandingkan dengan penelitian sejenis, sistem yang dikembangkan menunjukkan keseimbangan yang lebih baik antara akurasi dan kecepatan inferensi. Dibandingkan penelitian Prismadika et al. (2023), sistem ini menunjukkan performa yang lebih baik pada perangkat \emph{edge} yang sama (Jetson Nano), dengan FPS 46.86 vs 18.5 dan mAP 0.805 vs 0.763. Meskipun YOLOv8 yang digunakan oleh Hamayan (2024) mencapai mAP lebih tinggi (0.834), model tersebut membutuhkan sumber daya komputasi yang lebih besar.
+  
+  \item Efisiensi penggunaan sumber daya dan \emph{bandwidth} menjadi keunggulan sistem ini, dengan kebutuhan \emph{bandwidth} paling rendah (4 KB/s) dibandingkan penelitian lain seperti Hamayan (2024) dengan 8-10 KB/s, menjadikannya cocok untuk implementasi di lokasi dengan keterbatasan konektivitas internet.
 
 \end{enumerate}
 
 \section{Saran}
-\label{chap:saran}
+\label{sec:saran}
 
-Untuk pengembangan lebih lanjut pada \lipsum[1][1-3] antara lain:
+Untuk pengembangan lebih lanjut pada sistem deteksi kendaraan \emph{overdimensi} berbasis \emph{edge computing} dan integrasi \emph{cloud}, beberapa saran yang dapat diberikan antara lain:
 
 \begin{enumerate}[nolistsep]
 
-  \item Memperbaiki \lipsum[2][1-3]
+  \item Melakukan pengumpulan \emph{dataset} kendaraan \emph{overdimensi} yang lebih besar dan beragam untuk meningkatkan performa model, khususnya untuk kelas \emph{overdimensi} yang saat ini memiliki AP lebih rendah (0.732) dibandingkan kelas normal (0.879).
 
-  \item \lipsum[2][4-6]
+  \item Meningkatkan infrastruktur konektivitas jaringan untuk mengatasi keterbatasan \emph{bandwidth} yang ditemukan selama pengujian, sehingga mampu mendukung transfer data yang lebih cepat dan efisien, terutama pada skenario lalu lintas padat.
 
-  \item \lipsum[2][7-10]
+  \item Melakukan optimasi model lebih lanjut untuk meningkatkan efisiensi pada perangkat dengan keterbatasan sumber daya, atau mengeksplorasi perangkat \emph{edge} alternatif yang menawarkan keseimbangan lebih baik antara performa dan biaya dibandingkan Beelink Gemini T34 yang terbukti kurang optimal untuk aplikasi deteksi \emph{real-time}.
+  
+  \item Mengembangkan algoritma \emph{post-processing} yang lebih canggih untuk mengurangi \emph{false negative rate} (10.84\%), yang memiliki implikasi lebih serius dibandingkan \emph{false positive} dalam konteks deteksi kendaraan \emph{overdimensi} di gerbang tol.
+
+  \item Mengeksplorasi implementasi sistem pada perangkat \emph{edge} yang lebih hemat energi namun tetap mempertahankan kemampuan akselerasi GPU, mengingat kebutuhan implementasi jangka panjang di lokasi dengan keterbatasan sumber daya.
+  
+  \item Mengintegrasikan sistem dengan infrastruktur gerbang tol yang sudah ada, seperti sistem \emph{e-Toll} dan kamera CCTV, untuk memaksimalkan manfaat dan efisiensi implementasi.
+  
+  \item Mendeteksi kendaraan \emph{overdimensi} berdasarkan jumlah gandar kendaraan untuk kebutuhan analitik. Hal ini sempat disampaikan oleh pihak PT. Jasa Marga Tbk, namun karena keterbatasan waktu dan sumber daya, penelitian ini dicukupkan dengan deteksi berdasarkan jenis kendaraan.
 
 \end{enumerate}
