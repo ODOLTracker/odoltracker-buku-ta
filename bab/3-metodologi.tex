@@ -12,7 +12,7 @@ Dalam bab ini, akan dijelaskan metode yang digunakan dalam penelitian ini. Metod
 
   \includegraphics[scale=0.55]{gambar/bab3-block-diagram.png}
 
-  \caption{Blok Diagram Sistem Deteksi Kendaraan Overdimension}
+  \caption{Blok Diagram Sistem Deteksi Kendaraan \emph{Overdimension}}
   \label{fig:blockdiagrammethod}
 \end{figure}
 
@@ -27,7 +27,7 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
   \item Pelatihan data
 \end{enumerate}
 
-\textbf{Akuisisi data} dilakukan dengan mengambil data video dari kendaraan yang melintas. Akuisisi data dilakukan sebanyak 2 kali, yaitu di Jalan Tanjung Perak dan di Gerbang Tol Dupak 2 setelah memperoleh izin ke Dinas Perhubungan selaku pihak yang menangani pelanggaran \emph{overdimension} dan PT. Jasa Marga selaku pengelola jalan tol. Data video yang diambil nantinya akan dipotong-potong menjadi beberapa frame. Frame-frame tersebut akan digunakan sebagai data latih untuk model \emph{machine learning} setelah melewati proses \emph{Labelling}. Gambar \ref{fig:acquisitiondata} menunjukkan proses akuisisi data yang telah dilakukan.
+\textbf{Akuisisi data} dilakukan dengan mengambil data video dari kendaraan yang melintas. Akuisisi data dilakukan sebanyak 2 kali, yaitu di Jalan Tanjung Perak dan di Gerbang Tol Dupak 2 setelah memperoleh izin ke Dinas Perhubungan selaku pihak yang menangani pelanggaran \emph{overdimension} dan PT. Jasa Marga selaku pengelola jalan tol. Data video yang diambil nantinya akan dipotong-potong menjadi beberapa \emph{frame}. \emph{Frame-frame} tersebut akan digunakan sebagai data latih untuk model \emph{machine learning} setelah melewati proses \emph{Labelling}. Gambar \ref{fig:acquisitiondata} menunjukkan proses akuisisi data yang telah dilakukan.
 
 \begin{figure}[htbp]
   \centering
@@ -59,11 +59,11 @@ Di penelitian ini, kendaraan yang overdimension diberikan label \emph{truck} dan
   \label{fig:labellingdataillustration}
 \end{figure}
 
-\textbf{Praproses data} dilakukan setelah data telah diberi label. Hal ini bertujuan untuk mempersiapkan data yang akan digunakan sebagai data latih pada model \emph{machine learning} dalam hal ini SSD-MobileNet-V2. Pada awalnya data yang telah diberi label akan disesuaikan orientasinya dan di-\emph{resize} ke ukuran 300x300 piksel. Kemudian dilakukan juga augmentasi data dengan cara memberikan \emph{brightness} (kecerahan) sebanyak -12\% hingga 12\% dan \emph{exposure} (paparan) sebanyak -10\% hingga 10\%.
+\textbf{Praproses data} dilakukan setelah data telah diberi label. Hal ini bertujuan untuk mempersiapkan data yang akan digunakan sebagai data latih pada model \emph{machine learning} dalam hal ini SSD-MobileNetV2. Pada awalnya data yang telah diberi label akan disesuaikan orientasinya dan di-\emph{resize} ke ukuran 300x300 piksel. Kemudian dilakukan juga augmentasi data dengan cara memberikan \emph{brightness} (kecerahan) sebanyak -12\% hingga 12\% dan \emph{exposure} (paparan) sebanyak -10\% hingga 10\%.
 
 Setelah itu, data akan dibagi menjadi data latih dan data validasi dengan perbandingan 80:20. Gambar \ref{fig:citraasli} menunjukkan citra asli yang akan dipraproses, sedangkan Gambar \ref{fig:preprocessingdata} menunjukkan proses praproses data yang telah dilakukan.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
   \centering
 
   \includegraphics[scale=0.5]{gambar/bab3-citra-asli.jpg}
@@ -83,7 +83,7 @@ Setelah itu, data akan dibagi menjadi data latih dan data validasi dengan perban
   \label{fig:preprocessingdata}
 \end{figure}
 
-\textbf{Pelatihan data} dilakukan setelah data telah dipersiapkan. Data latih yang telah disiapkan akan digunakan untuk melatih model \emph{machine learning} dengan menggunakan \emph{framework} PyTorch. Model yang digunakan adalah SSD-MobileNet-V2 yang telah dilatih sebelumnya (\emph{pre-trained model}) dengan menggunakan dataset COCO. Proses pelatihan ini akan menghasilkan model yang dapat digunakan untuk mendeteksi kendaraan \emph{overdimension}.
+\textbf{Pelatihan data} dilakukan setelah data telah dipersiapkan. Data latih yang telah disiapkan akan digunakan untuk melatih model \emph{machine learning} dengan menggunakan \emph{framework} PyTorch. Model yang digunakan adalah SSD-MobileNetV2 yang telah dilatih sebelumnya (\emph{pre-trained model}) dengan menggunakan dataset COCO. Proses pelatihan ini akan menghasilkan model yang dapat digunakan untuk mendeteksi kendaraan \emph{overdimension}.
 
 \subsection{\emph{Hardware}}
 
@@ -109,7 +109,7 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
   \label{fig:implementationedgedevice}
 \end{figure}
 
-\textbf{Desain dan pencetakan wadah alat} dilakukan setelah model \emph{machine learning} berhasil diimplementasikan di \emph{Edge Device}. Wadah alat ini berfungsi sebagai tempat untuk meletakkan \emph{Edge Device} dan kamera yang digunakan untuk mendeteksi kendaraan \emph{overdimension}. Gambar \ref{fig:designcontainercamera} dan \ref{fig:designcontainerjetson} masing-masing menunjukkan desain wadah kamera dan wadah Jetson Nano yang telah dibuat. Untuk Beelink Gemini T34, setelah dilakukan pengujian lebih lanjut, ditemukan bahwa perangkat ini memiliki keterbatasan dalam melakukan inferensi model secara real-time karena hanya mengandalkan CPU. Meskipun telah dilakukan optimasi, performa inferensi tetap tidak memadai untuk aplikasi deteksi real-time, sehingga pengembangan wadah khusus untuk perangkat ini tidak dilanjutkan.
+\textbf{Desain dan pencetakan wadah alat} dilakukan setelah model \emph{machine learning} berhasil diimplementasikan di \emph{Edge Device}. Wadah alat ini berfungsi sebagai tempat untuk meletakkan \emph{Edge Device} dan kamera yang digunakan untuk mendeteksi kendaraan \emph{overdimension}. Gambar \ref{fig:designcontainercamera} dan \ref{fig:designcontainerjetson} masing-masing menunjukkan desain wadah kamera dan wadah Jetson Nano yang telah dibuat. Untuk Beelink Gemini T34, setelah dilakukan pengujian lebih lanjut, ditemukan bahwa perangkat ini memiliki keterbatasan dalam melakukan inferensi model secara \emph{real-time} karena hanya mengandalkan CPU. Meskipun telah dilakukan optimasi, performa inferensi tetap tidak memadai untuk aplikasi deteksi \emph{real-time}, sehingga pengembangan wadah khusus untuk perangkat ini tidak dilanjutkan.
 
 \begin{figure}[htbp]
   \centering
@@ -133,7 +133,7 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
   \label{fig:designcontainerjetson}
 \end{figure}
 
-Setelah didesain, wadah alat tersebut kemudian dicetak menggunakan printer 3D. Gambar \ref{fig:printcontainer} masing-masing menunjukkan proses pencetakan wadah kamera dan wadah Jetson Nano.
+Setelah didesain, wadah alat tersebut kemudian dicetak menggunakan printer 3D. Gambar \ref{fig:printcontainer} masing-masing menunjukkan hasil pencetakan wadah kamera dan wadah Jetson Nano.
 
 \begin{figure}[htbp]
   \centering
@@ -151,11 +151,11 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
 \begin{enumerate}[nolistsep]
   \item Membuat daftar fitur aplikasi
   \item Desain basis data
-  \item Desain class diagram
-  \item Implementasi class diagram
+  \item Desain \emph{class diagram}
+  \item Implementasi \emph{class diagram}
 \end{enumerate}
 
-\textbf{Membuat daftar fitur aplikasi} dilakukan untuk menentukan fitur-fitur yang akan ada pada aplikasi, sehingga dapat mempermudah desain basis data dan desain class diagram. Fitur-fitur yang ada pada aplikasi ini adalah:
+\textbf{Membuat daftar fitur aplikasi} dilakukan untuk menentukan fitur-fitur yang akan ada pada aplikasi, sehingga dapat mempermudah desain basis data dan desain \emph{class diagram}. Fitur-fitur yang ada pada aplikasi ini adalah:
 \begin{itemize}[nolistsep]
   \item Pendaftaran akun
   \item Login
@@ -179,7 +179,7 @@ Sehingga dapat disimpulkan bahwa aplikasi ini memiliki 2 jenis pengguna, yaitu a
   \item Tabel \emph{Images}
 \end{itemize}
 
-Gambar \ref{fig:databasedesign} menunjukkan desain basis data yang telah dibuat menggunakan website \emph{dbdiagram.io}. Desain basis data ini menggambarkan relasi antar tabel yang ada pada basis data. Tabel-tabel tersebut memiliki relasi satu sama lain, sehingga dapat saling berhubungan dan mempermudah dalam pengolahan data.
+Gambar \ref{fig:databasedesign} menunjukkan desain basis data yang telah dibuat menggunakan \emph{website} \emph{dbdiagram.io}. Desain basis data ini menggambarkan relasi antar tabel yang ada pada basis data. Tabel-tabel tersebut memiliki relasi satu sama lain, sehingga dapat saling berhubungan dan mempermudah dalam pengolahan data.
 \begin{figure}[htbp]
   \centering
 
@@ -198,7 +198,7 @@ Dari tabel-tabel yang ada pada basis data tersebut, dapat dilihat bahwa:
   \item Tabel \emph{Images} berisi data gambar kendaraan \emph{overdimension} yang terdeteksi. Gambar tidak disimpan dalam basis data, tetapi hanya menyimpan \emph{link} gambar yang ada pada \emph{cloud storage} Cloudinary.
 \end{itemize}
 
-\textbf{Desain class diagram} dilakukan untuk menentukan struktur class yang akan digunakan pada aplikasi. Class diagram ini menggambarkan relasi antar class yang ada pada aplikasi. Class-class tersebut memiliki relasi satu sama lain, sehingga dapat saling berhubungan dan mempermudah dalam pengolahan data. Gambar \ref{fig:classdiagram} menunjukkan desain class diagram yang telah dibuat menggunakan website \emph{app.diagrams.net}.
+\textbf{Desain \emph{class diagram}} dilakukan untuk menentukan struktur \emph{class} yang akan digunakan pada aplikasi. \emph{Class diagram} ini menggambarkan relasi antar \emph{class} yang ada pada aplikasi. \emph{Class-class} tersebut memiliki relasi satu sama lain, sehingga dapat saling berhubungan dan mempermudah dalam pengolahan data. Gambar \ref{fig:classdiagram} menunjukkan desain \emph{class diagram} yang telah dibuat menggunakan \emph{website} \emph{app.diagrams.net}.
 
 \begin{figure}[htbp]
   \centering
@@ -208,7 +208,7 @@ Dari tabel-tabel yang ada pada basis data tersebut, dapat dilihat bahwa:
   \caption{Desain \emph{Class Diagram}}
   \label{fig:classdiagram}
 \end{figure}
-Dari class-class yang ada pada class diagram tersebut, dapat dilihat bahwa:
+Dari \emph{class-class} yang ada pada \emph{class diagram} tersebut, dapat dilihat bahwa:
 \begin{itemize}[nolistsep]
   \item Class \emph{User} berisi data pengguna aplikasi, baik admin maupun operator. Class ini memiliki relasi \emph{one to many} dengan class \emph{VehicleDetection} dan \emph{Notification}
   \item Class \emph{TollGate} berisi data gerbang tol yang ada. Class ini memiliki relasi \emph{one to many} dengan class \emph{VehicleDetection}
@@ -217,7 +217,7 @@ Dari class-class yang ada pada class diagram tersebut, dapat dilihat bahwa:
   \item Class \emph{Image} berisi data gambar kendaraan \emph{overdimension} yang terdeteksi. Gambar tidak disimpan dalam basis data, tetapi hanya menyimpan \emph{link} gambar yang ada pada \emph{cloud storage} Cloudinary.
 \end{itemize}
 
-\textbf{Implementasi class diagram} dilakukan setelah class diagram selesai dibuat. Class-class yang ada pada class diagram akan diimplementasikan ke dalam kode program. Kode program ini ditulis menggunakan bahasa pemrograman JavaScript dengan \emph{framework} Express.js, \emph{ORM} Sequelize, dan \emph{cloud storage} Cloudinary. Kode program ini akan digunakan untuk mengelola data yang ada pada basis data, serta mengelola data yang ada pada \emph{cloud storage} Cloudinary. Setelah \emph{endpoint} selesai dibuat, masing-masing \emph{endpoint} akan di-\emph{test} menggunakan \emph{Postman} untuk memastikan bahwa \emph{endpoint} tersebut dapat berjalan dengan baik. Gambar \ref{fig:implementationclassdiagram} menunjukkan implementasi class diagram yang telah dilakukan.
+\textbf{Implementasi \emph{class diagram}} dilakukan setelah \emph{class diagram} selesai dibuat. \emph{Class-class} yang ada pada \emph{class diagram} akan diimplementasikan ke dalam kode program. Kode program ini ditulis menggunakan bahasa pemrograman JavaScript dengan \emph{framework} Express.js, \emph{ORM} Sequelize, dan \emph{cloud storage} Cloudinary. Kode program ini akan digunakan untuk mengelola data yang ada pada basis data, serta mengelola data yang ada pada \emph{cloud storage} Cloudinary. Setelah \emph{endpoint} selesai dibuat, masing-masing \emph{endpoint} akan di-\emph{test} menggunakan \emph{Postman} untuk memastikan bahwa \emph{endpoint} tersebut dapat berjalan dengan baik. Gambar \ref{fig:implementationclassdiagram} menunjukkan implementasi \emph{class diagram} yang telah dilakukan.
 
 \begin{figure}[htbp]
   \centering
@@ -238,7 +238,7 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
 
 \textbf{Implementasi basis data di \emph{cloud}} dilakukan setelah desain basis data selesai dilakukan. Basis data yang ada pada desain basis data akan diimplementasikan ke \emph{cloud} yang bertujuan agar basis data dapat diakses kapan saja dan di mana saja. Basis data ini diimplementasikan menggunakan \emph{cloud database} PostgreSQL dengan bantuan \emph{management tool} pgAdmin4.
 
-\textbf{Implementasi \emph{backend} di \emph{cloud}} dilakukan setelah implementasi basis data selesai dilakukan. \emph{Backend} yang ada pada desain class diagram akan diimplementasikan ke cloud yang bertujuan agar fungsi \emph{backend} dapat diakses kapan saja dan di mana saja. \emph{Backend} ini diimplementasikan menggunakan \emph{Virtual Private Server} dengan menggunakan \emph{cloud} \emph{platform} Biznet Gio Neo Lite. Gambar \ref{fig:implementationbackend} menunjukkan implementasi \emph{backend} yang telah dilakukan.
+\textbf{Implementasi \emph{backend} di \emph{cloud}} dilakukan setelah implementasi basis data selesai dilakukan. \emph{Backend} yang ada pada desain \emph{class diagram} akan diimplementasikan ke cloud yang bertujuan agar fungsi \emph{backend} dapat diakses kapan saja dan di mana saja. \emph{Backend} ini diimplementasikan menggunakan \emph{Virtual Private Server} dengan menggunakan \emph{cloud} \emph{platform} Biznet Gio Neo Lite. Gambar \ref{fig:implementationbackend} menunjukkan implementasi \emph{backend} yang telah dilakukan.
 
 \begin{figure}[htbp]
   \centering
@@ -272,7 +272,7 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
   \label{fig:wireframe}
 \end{figure}
 
-\textbf{Pembuatan \emph{prototype} aplikasi} dan \textbf{Integrasi \emph{backend} dengan aplikasi} dilakukan setelah desain \textit{wireframe}, \textit{mockup}, dan \emph{backend} selesai dibuat. Prototype ini akan membantu dalam membuat aplikasi yang sesuai dengan kebutuhan pengguna. Gambar \ref{fig:prototype} menunjukkan prototype aplikasi yang telah dibuat.
+\textbf{Pembuatan \emph{prototype} aplikasi} dan \textbf{Integrasi \emph{backend} dengan aplikasi} dilakukan setelah desain \textit{wireframe}, \textit{mockup}, dan \emph{backend} selesai dibuat. \emph{Prototype} ini akan membantu dalam membuat aplikasi yang sesuai dengan kebutuhan pengguna. Gambar \ref{fig:prototype} menunjukkan \emph{prototype} aplikasi yang telah dibuat.
 
 \begin{figure}[htbp]
   \centering
@@ -283,7 +283,7 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
   \includegraphics[scale=0.2]{gambar/bab3-notification.jpeg}
   \includegraphics[scale=0.2]{gambar/bab3-profile.jpeg}
 
-  \caption{Prototype Aplikasi (Dari kiri atas searah jarum jam: Login, Register, Dashboard, Notification, Profile)}
+  \caption{\centering \emph{Prototype} Aplikasi (Dari kiri atas searah jarum jam: Login, Registrasi, Dashboard, Notifikasi, Profil)}
   \label{fig:prototype}
 \end{figure}
 
@@ -291,6 +291,8 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
 
 \begin{table}[htbp]
   \centering
+  \caption{Hasil pengujian fitur aplikasi}
+  \label{tab:testingapp}
   \begin{tabular}{|l|l|l|}
   \hline
   \textbf{Fitur} & \textbf{Skenario} & \textbf{Status} \\
@@ -316,6 +318,4 @@ Pada bagian ini, dilakukan beberapa tahapan, yaitu:
   & Mengubah data pengguna & Berhasil \\
   \hline
   \end{tabular}
-  \caption{Hasil pengujian fitur aplikasi}
-  \label{tab:testingapp}
 \end{table}

@@ -11,6 +11,8 @@ Selain itu, pemeriksaan \emph{ODOL} oleh UPPKB (Unit Pelaksana Penimbangan Kenda
 
 Oleh karena itu, dibutuhkan sistem otomatis yang mampu mendeteksi pelanggaran secara \emph{real-time}, meningkatkan cakupan pemantauan, dan memberikan notifikasi langsung kepada pengguna. Sistem ini harus mampu mengidentifikasi kendaraan yang melanggar batas dimensi yang diizinkan, adapun teknologi yang digunakan adalah \emph{deep learning} terkhusus \emph{Convolutional Neural Network} (CNN). Implementasi model \emph{deep learning} pada perangkat \emph{edge device} akan memungkinkan sistem dapat berjalan secara \emph{real-time} dan dapat diaplikasikan pada berbagai lokasi tanpa memerlukan infrastruktur yang rumit.
 
+Dalam implementasi sistem pada \emph{edge device}, pemilihan perangkat yang tepat menjadi faktor krusial untuk memastikan kinerja deteksi yang optimal. Terdapat dua pendekatan utama dalam komputasi pada \emph{edge device}, yaitu berbasis GPU seperti NVIDIA Jetson Nano yang dirancang khusus untuk aplikasi \emph{deep learning}, serta berbasis CPU seperti Beelink Gemini T34 yang lebih umum digunakan. Perbandingan kinerja antara kedua jenis perangkat ini penting untuk dilakukan guna menentukan spesifikasi ideal yang dibutuhkan dalam implementasi sistem deteksi \emph{real-time}. Hal ini akan memberikan panduan bagi \emph{stakeholder} dalam memilih infrastruktur yang tepat dengan mempertimbangkan aspek performa, efisiensi energi, dan biaya.
+
 \section{Rumusan Masalah}
 \label{sec:rumusanmasalah}
 
@@ -20,7 +22,7 @@ Pelanggaran \emph{overdimension} pada kendaraan bermotor merupakan masalah seriu
 
   \item Bagaimana cara menerapkan sistem deteksi agar dapat dijalankan pada perangkat \emph{edge device}?
   
-  \item Bagaimana cara membuat sistem deteksi yang \emph{scalable} dan dapat diintegrasikan dengan sistem yang sudah ada?
+  \item Bagaimana cara mengirim dan menyimpan data hasil deteksi ke \emph{server}?
   
   \item Bagaimana cara menambahkan fitur notifikasi otomatis kepada pihak berwenang saat terjadi pelanggaran \emph{overdimension}?
   
@@ -35,7 +37,7 @@ Tujuan utama dari penelitian ini yaitu:
 
   \item Menerapkan sistem deteksi agar dapat dijalankan pada perangkat \emph{edge device}.
   
-  \item Membuat sistem deteksi yang \emph{scalable} dan dapat diintegrasikan dengan sistem yang sudah ada.
+  \item Mengirim dan menyimpan data hasil deteksi ke \emph{server}.
   
   \item Menambahkan fitur notifikasi otomatis kepada pihak berwenang saat terjadi pelanggaran \emph{overdimension}.
   
@@ -61,12 +63,18 @@ Adapun manfaat yang didapat pada pelaksanaan tugas akhir ini adalah sebagai beri
 
 \begin{enumerate}[nolistsep]
 
-  \item Memberikan kontribusi pada pengembangan teknologi deteksi kendaraan \emph{overdimension} menggunakan model \emph{deep learning}.
-  
-  \item Memberikan solusi yang efektif dan efisien dalam mendeteksi kendaraan \emph{overdimension} secara \emph{real-time}.
-  
-  \item Memberikan rekomendasi untuk penelitian selanjutnya dalam pengembangan sistem deteksi kendaraan \emph{overdimension}.
-  
+  \item \textbf{Bagi Peneliti} \\
+      Penelitian ini diharapkan dapat memberikan kontribusi dalam pengembangan sistem deteksi kendaraan \emph{overdimension} yang lebih efektif dan efisien, serta menjadi referensi bagi penelitian selanjutnya dalam bidang yang sama.
+
+  \item \textbf{Bagi Pihak Berwenang} \\
+      Penelitian ini diharapkan dapat memberikan solusi yang efektif dan efisien dalam mendeteksi kendaraan \emph{overdimension} secara \emph{real-time}, serta menjadi referensi bagi pihak berwenang dalam pengembangan sistem deteksi kendaraan \emph{overdimension}.
+
+  \item \textbf{Bagi Masyarakat} \\
+      Penelitian ini diharapkan dapat memberikan manfaat bagi masyarakat dalam hal peningkatan keselamatan jalan raya, khususnya dalam penggunaan kendaraan bermotor agar tidak melanggar batas dimensi yang diizinkan.
+
+  \item \textbf{Bagi Perusahaan} \\
+      Penelitian ini diharapkan dapat memberikan manfaat bagi perusahaan dalam logistik, agar selalu mengetahui kondisi dan kemungkinan pelanggaran kendaraan \emph{overdimension} sehingga dapat mengambil kebijakan yang tepat.
+
 \end{enumerate}
 
 \section{Sistematika Penulisan}
@@ -91,12 +99,12 @@ Dalam pembuatan laporan penelitian tugas akhir ini akan terbagi menjadi lima bag
 
         \vspace{2ex}
 
-  \item \textbf{BAB IV Hasil yang Diharapkan} \\
-      Bab ini berisi penjelasan mengenai hasil yang diharapkan dari penelitian yang dilakukan. Selain itu, pada bab ini dijelaskan juga mengenai hasil pendahuluan yang telah dilakukan.
+  \item \textbf{BAB IV Pengujian dan Analisis} \\
+      Bab ini berisi mengenai hasil penelitian yang telah didapatkan dari metodologi yang telah dilakukan. Kemudian akan dijelaskan juga mengenai pengujian yang akan dilakukan dalam keadaan yang telah ditentukan beserta dengan pembahasan akan hasil pengujian dan fenomena yang terjadi. 
 
         \vspace{2ex}
 
-  \item \textbf{BAB V Jadwal Penelitian} \\
-      Bab ini berisi penjelasan mengenai jadwal penelitian yang akan dilakukan. Selain itu, pada bab ini dijelaskan juga mengenai rencana kerja yang akan dilakukan.
+  \item \textbf{BAB V Penutup} \\
+      Bab ini berisi kesimpulan yang didapatkan dari hasil penelitian berdasarkan permasalahan dan tujuan di awal. Selain itu, terdapat juga saran untuk para peneliti yang ingin mengembangkan penelitian dengan topik yang sama ataupun beririsan.
 
 \end{enumerate}

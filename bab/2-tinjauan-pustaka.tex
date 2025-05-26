@@ -35,7 +35,7 @@ Hasil yang didapatkan yaitu sistem otomatis mampu mendeteksi kendaraan mobil dan
 
 Penelitian ini dilakukan oleh Zhichao Chen et al. \parencite*{Chen2022Fast} mengusulkan peningkatan pada algoritma Single Shot Multibox Detector (SSD) untuk deteksi kendaraan di lingkungan lalu lintas yang kompleks. Inovasi utama adalah penggunaan MobileNet v2 sebagai backbone, menggantikan VGG16 yang lebih berat secara komputasi. Selain itu, ditambahkan channel attention mechanism (SE module) untuk memperkuat fitur penting dan modul dekonvolusi untuk melakukan bottom–top feature fusion, sehingga informasi semantik pada fitur dangkal dapat diperbaiki.
 
-Hasil eksperimen menunjukkan rata-rata presisi (AP) sebesar 82,59\% pada dataset publik BDD100K dan 84,83\% pada KITTI. Waktu inferensi per gambar hanya 73 ms, sekitar 5/11 dari waktu model SSD orisinal, sehingga terjadi peningkatan baik pada kecepatan maupun akurasi. Penelitian ini menegaskan bahwa kombinasi backbone ringan, mekanisme atensi, dan fusi fitur dapat menghasilkan deteksi kendaraan yang efisien dan akurat, sangat relevan untuk aplikasi real-time dan perangkat dengan sumber daya terbatas
+Hasil eksperimen menunjukkan rata-rata presisi (AP) sebesar 82,59\% pada dataset publik BDD100K dan 84,83\% pada KITTI. Waktu inferensi per gambar hanya 73 ms, sekitar 5/11 dari waktu model SSD orisinal, sehingga terjadi peningkatan baik pada kecepatan maupun akurasi. Penelitian ini menegaskan bahwa kombinasi backbone ringan, mekanisme atensi, dan fusi fitur dapat menghasilkan deteksi kendaraan yang efisien dan akurat, sangat relevan untuk aplikasi \emph{real-time} dan perangkat dengan sumber daya terbatas
 
 \subsection{\emph{Edge Intelligence Empowered Vehicle Detection and Image Segmentation for Autonomous Vehicles}}
 \label{subsec:edgeintelligenceempoweredvehicledetection}
@@ -61,9 +61,9 @@ Kendaraan \emph{overdimension} adalah kendaraan yang memiliki dimensi melebihi k
 
 \subsubsection{Peraturan Pemerintah Nomor 55 Tahun 2012 Pasal 54}
 
-\begin{enumerate}
+\begin{enumerate}[nolistsep]
   \item Panjang tidak melebihi:
-  \begin{enumerate}
+  \begin{enumerate}[nolistsep]
     \item 12.000 (dua belas ribu) milimeter untuk Kendaran Bermotor tanpa Kereta Gandengan atau Kereta Tempelan selain Mobil Bus;
     \item 13.500 (tiga belas ribu lima ratus) milimeter untuk Mobil Bus tunggal;
     \item 18.000 (delapan belas ribu) milimeter untuk Kendaraan Bermotor yang dilengkapi dengan Kereta Gandengan atau Kereta Tempelan.
@@ -80,20 +80,20 @@ Kendaraan \emph{overdimension} adalah kendaraan yang memiliki dimensi melebihi k
 
 \subsubsection{Peraturan Pemerintah Nomor 55 Tahun 2012 Pasal 55}
 
-\begin{enumerate}
+\begin{enumerate}[nolistsep]
   \item Ukuran bak muatan Mobil Barang disesuaikan dengan konfigurasi sumbu, JBB, JBI, dan spesifikasi tipe landasan Kendaraan Bermotor.
   \item Bak muatan Mobil Barang sebagaimana dimaksud pada ayat (1) terdiri atas:
-  \begin{enumerate}
+  \begin{enumerate}[nolistsep]
     \item bak muatan terbuka; dan
     \item bak muatan tertutup. 
   \end{enumerate}
   \item Bak muatan terbuka dan tertutup sebagaimana dimaksud pada ayat (2) harus memenuhi persyaratan paling sedikit:
-  \begin{enumerate}
+  \begin{enumerate}[nolistsep]
     \item panjang, lebar, dan tinggi ukuran bak muatan harus sesuai dengan spesifikasi teknis Kendaraan Bermotor dan daya angkut;
     \item jarak antara dinding terluar bagian belakang kabin dengan bak muatan bagian depan paling sedikit 150 (seratus lima puluh) milimeter untuk kendaraan sumbu belakang tunggal dan 200 (dua ratus) milimeter untuk Kendaraan Bermotor dengan sumbu belakang ganda atau lebih;
     \item dinding terluar bak muatan bagian belakang tidak melebihi ujung landasan bagian belakang kecuali untuk dump truck; dan
     \item lebar maksimum bak muatan terbuka tidak melebihi:
-    \begin{enumerate}
+    \begin{enumerate}[nolistsep]
       \item 50 (lima puluh) milimeter dari ban terluar pada sumbu kedua atau sumbu belakang Kendaraan untuk Kendaraan Bermotor sumbu ganda; atau
       \item lebar kabin ditambah 50 (lima puluh) milimeter pada sisi kiri dan 50 (lima puluh) milimeter pada sisi kanan untuk Kendaraan Bermotor sumbu tunggal.
     \end{enumerate} 
@@ -121,6 +121,108 @@ Dari ketentuan tersebut, dilakukan pendekatan rumus untuk menghitung dimensi ken
 
 Namun dalam penelitian ini, rumus tersebut tidak digunakan secara langsung. Sebagai gantinya, akan digunakan model \emph{deep learning} untuk mengidentifikasi kendaraan \emph{overdimension} berdasarkan karakteristik visualnya. Hal ini akan memungkinkan sistem untuk melakukan deteksi secara otomatis dan \emph{real-time} tanpa memerlukan perhitungan manual.
 
+\subsection{Regulasi Gandar Kendaraan Bermotor}
+\label{subsec:regulasigandar}
+
+Gandar kendaraan bermotor merupakan komponen penting yang diatur secara ketat dalam regulasi pemerintah \parencite*{kemenhub2015}. Regulasi ini bertujuan untuk menjamin keselamatan, melindungi infrastruktur jalan, dan mengoptimalkan efisiensi transportasi. Pengaturan gandar mencakup berbagai aspek teknis dan operasional yang harus dipatuhi oleh setiap kendaraan bermotor yang beroperasi di jalan raya Indonesia.
+
+\subsubsection{Konsep Dasar Gandar}
+Gandar, atau dalam bahasa Inggris disebut axle, adalah komponen struktural utama pada kendaraan yang memiliki fungsi ganda. Pertama, sebagai poros penopang roda yang mentransmisikan beban vertikal dari berat kendaraan dan muatan ke permukaan jalan. Kedua, sebagai penghubung mekanis dengan sasis kendaraan yang menyalurkan gaya-gaya dinamis selama kendaraan bergerak \parencite*{cebon1989assessment}.
+
+Berdasarkan fungsinya, gandar dapat diklasifikasikan menjadi dua jenis utama:
+\begin{itemize}[nolistsep]
+  \item \textbf{Gandar Penggerak (Drive Axle):} Gandar yang terhubung dengan sistem transmisi dan menerima tenaga dari mesin untuk menggerakkan kendaraan. Gandar ini biasanya dilengkapi dengan diferensial untuk mengakomodasi perbedaan kecepatan roda saat berbelok.
+  \item \textbf{Gandar Bebas (Dead/Idler Axle):} Gandar yang hanya berfungsi sebagai penopang beban dan tidak terhubung dengan sistem penggerak. Gandar ini umumnya ditemukan pada bagian depan kendaraan atau sebagai gandar tambahan pada kendaraan berat.
+\end{itemize}
+
+Konfigurasi sumbu pada kendaraan bermotor diatur dalam PP No. 55 Tahun 2012 \parencite*{ppno55thn2012}, yang mengklasifikasikan beberapa tipe standar:
+\begin{itemize}[nolistsep]
+  \item \textbf{Konfigurasi 1.1:} Dua sumbu tunggal, umum pada kendaraan ringan
+  \item \textbf{Konfigurasi 1.2:} Satu sumbu tunggal di depan dan satu sumbu ganda di belakang, tipikal pada truk sedang
+  \item \textbf{Konfigurasi 1.22:} Satu sumbu tunggal di depan dan dua sumbu ganda di belakang, umumnya pada truk berat
+\end{itemize}
+
+\subsubsection{Beban dan Muatan}
+Regulasi beban dan muatan kendaraan didasarkan pada tiga parameter utama yang saling terkait \parencite*{kemenhub2015}:
+
+\begin{itemize}[nolistsep]
+  \item \textbf{Beban Gandar:} Merupakan total berat yang ditanggung oleh satu gandar, yang terdiri dari:
+  \begin{itemize}[nolistsep]
+    \item Berat kosong kendaraan yang terdistribusi ke gandar tersebut
+    \item Berat muatan yang ditopang oleh gandar
+    \item Berat komponen pendukung seperti suspensi dan roda
+  \end{itemize}
+  
+  \item \textbf{Muatan Sumbu Terberat (MST):} Parameter kritis yang menentukan batas beban maksimum yang diizinkan untuk setiap sumbu atau kelompok sumbu \parencite*{ppno55thn2012}. MST ditetapkan berdasarkan:
+  \begin{itemize}[nolistsep]
+    \item Kapasitas desain gandar
+    \item Daya dukung jalan
+    \item Faktor keselamatan
+  \end{itemize}
+  
+  \item \textbf{Jumlah Berat yang Diizinkan (JBI):} Total berat maksimum kendaraan beserta muatannya yang diizinkan beroperasi di jalan. JBI mempertimbangkan:
+  \begin{itemize}[nolistsep]
+    \item Distribusi beban antar sumbu
+    \item Kapasitas komponen kendaraan
+    \item Batasan regulasi yang berlaku
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Dampak Beban Berlebih}
+Pelanggaran terhadap batas beban yang ditetapkan dapat menyebabkan berbagai dampak negatif pada infrastruktur jalan dan keselamatan. Menurut studi yang dilakukan oleh Huang \parencite*{huang2004pavement}, beban gandar berlebih dapat mengakibatkan:
+
+\begin{itemize}[nolistsep]
+  \item \textbf{Kerusakan Infrastruktur:} Manifestasi kerusakan meliputi:
+  \begin{itemize}[nolistsep]
+    \item \emph{Fatigue Cracking} (retak fatik): Retakan yang terbentuk akibat beban berulang yang melebihi kapasitas struktur perkerasan
+    \item \emph{Rutting} (deformasi permanen): Cekungan yang terbentuk pada jalur roda akibat deformasi plastis material perkerasan
+    \item \emph{Ravelling} (lepasnya butiran): Terlepasnya material permukaan jalan akibat hilangnya daya ikat antar agregat
+  \end{itemize}
+  
+  \item \textbf{Hukum Pangkat Empat:} Prinsip fundamental dalam analisis kerusakan jalan yang menyatakan bahwa tingkat kerusakan meningkat secara eksponensial (pangkat empat) terhadap peningkatan beban gandar. Secara matematis dapat dinyatakan:
+  \begin{equation}
+    \mbox{Faktor Kerusakan} = \left(\frac{\mbox{Beban Aktual}}{\mbox{Beban Standar}}\right)^4
+  \end{equation}
+  
+  Sebagai contoh, jika beban gandar meningkat 20\% dari standar:
+  \begin{equation}
+    \mbox{Faktor Kerusakan} = (1.20)^4 = 2.07
+  \end{equation}
+  
+  Artinya, peningkatan beban sebesar 20\% akan menyebabkan kerusakan lebih dari dua kali lipat dari kondisi normal.
+\end{itemize}
+
+\subsubsection{Persyaratan Teknis dan Pengujian}
+Untuk memastikan kepatuhan terhadap regulasi dan menjamin keselamatan, kendaraan bermotor harus melalui serangkaian pengujian dan pemeriksaan \parencite*{ditjenhubdat2021}:
+
+\begin{itemize}[nolistsep]
+  \item \textbf{Kelaikan Jalan:} Evaluasi menyeluruh yang mencakup:
+  \begin{itemize}[nolistsep]
+    \item Kondisi fisik gandar dan komponen pendukungnya
+    \item Sistem suspensi dan karakteristik redamannya
+    \item Efektivitas sistem pengereman pada setiap gandar
+    \item Keseimbangan distribusi beban antar gandar
+  \end{itemize}
+  
+  \item \textbf{Uji Tipe:} Serangkaian pengujian komprehensif terhadap prototipe kendaraan \parencite*{kemenhub2016} yang meliputi:
+  \begin{itemize}[nolistsep]
+    \item Pengujian kekuatan struktur gandar
+    \item Verifikasi kapasitas beban sesuai desain
+    \item Evaluasi kinerja sistem pengereman
+    \item Pengujian stabilitas kendaraan
+  \end{itemize}
+  
+  \item \textbf{Uji Berkala:} Pemeriksaan rutin yang dilakukan untuk memastikan:
+  \begin{itemize}[nolistsep]
+    \item Tidak ada deformasi atau kerusakan pada gandar
+    \item Sistem suspensi berfungsi optimal
+    \item Distribusi pengereman sesuai standar
+    \item Kesesuaian dengan batas beban yang diizinkan
+  \end{itemize}
+\end{itemize}
+
+Pemahaman mendalam tentang regulasi gandar ini penting dalam pengembangan sistem deteksi kendaraan \emph{overdimension}, karena menjadi dasar dalam menentukan parameter dan batasan yang akan digunakan dalam algoritma deteksi. Meskipun penelitian ini menggunakan pendekatan visual melalui \emph{deep learning}, pengetahuan tentang aspek teknis dan regulasi gandar membantu dalam memahami karakteristik dan pola yang perlu diidentifikasi oleh sistem.
+
 \subsection{\emph{Neural Network}}
 \emph{Neural Network} (NN), atau jaringan saraf, adalah fondasi dari banyak model \emph{deep learning}, termasuk CNN. Bagian ini akan membahas konsep dasar NN mulai dari perceptron, fungsi aktivasi, mekanisme \emph{feed forward}, \emph{backpropagation}, \emph{loss function}, dan \emph{optimizer}.
 
@@ -134,35 +236,40 @@ Namun dalam penelitian ini, rumus tersebut tidak digunakan secara langsung. Seba
 \subsubsection{\emph{Perceptron}}
 \emph{Perceptron} merupakan dasar dari NN, yang diperkenalkan oleh Frank Rosenblatt pada tahun 1958 \parencite*{rosenblatt1958perceptron}. \emph{Perceptron} adalah model jaringan saraf tiruan yang paling sederhana, yang memodelkan sebuah neuron dalam otak.
 
-Struktur dasar \emph{perceptron} terdiri dari \emph{input} \( x_1, x_2, \dots, x_n \), \emph{weights} (bobot) \( w_1, w_2, \dots, w_n \), dan bias \( b \). \emph{Output} dari \emph{perceptron} dihitung menggunakan rumus:
-\[ y = f(w \cdot x + b) \]
+Struktur dasar \emph{perceptron} terdiri dari \emph{input} \( x_1, x_2, \dots, x_n \), \emph{weights} (bobot) \( w_1, w_2, \dots, w_n \), dan bias \( b \). \emph{Output} dari \emph{perceptron} dihitung menggunakan Persamaan \ref{eq:perceptron}:
+
+\begin{equation}
+  \label{eq:perceptron}
+  y = f(w \cdot x + b)
+\end{equation}
+
 dimana \( f \) adalah fungsi aktivasi, \( w \cdot x \) adalah \emph{dot product} antara vektor bobot dan vektor input, dan \( b \) adalah bias.
  
  \subsubsection{\emph{Activation Function}}
  \emph{Activation function} menentukan \emph{output} dari sebuah \emph{neuron} berdasarkan \emph{input} total yang diterima. Beberapa fungsi aktivasi yang sering digunakan adalah:
- \begin{itemize}
+ \begin{itemize}[nolistsep]
    \item Sigmoid: \( \sigma(x) = \frac{1}{1 + e^{-x}} \). Fungsi ini menghasilkan \emph{output} dalam rentang \( (0, 1) \), yang berguna untuk tugas klasifikasi biner.
    \item Tanh: \( \tanh(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} \). Fungsi ini menghasilkan \emph{output} dalam rentang \( (-1, 1) \), yang membantu dalam mengatasi masalah \emph{vanishing gradient}. Yaitu ketika nilai \emph{input} yang besar atau kecil menyebabkan gradien yang sangat kecil.
    \item ReLU (Rectified Linear Unit): \( ReLU(x) = \max(0, x) \). Fungsi ini menghasilkan \emph{output} \( 0 \) jika \emph{input} \( x \leq 0 \) dan \( x \) jika \( x > 0 \). ReLU adalah fungsi aktivasi yang paling umum digunakan dalam arsitektur NN modern karena sederhana dan efektif.
  \end{itemize}
 
- Berikut beberapa grafik dari \emph{activation function} yang disebutkan di atas.
+  Gambar \ref{fig:sigmoid_function} (Sigmoid), \ref{fig:tanh_function} (Tanh), dan \ref{fig:relu_function} (ReLU) menunjukkan grafik dari \emph{activation function} yang disebutkan di atas.
 
-  \begin{figure}[H]
+  \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.4]{gambar/bab2-grafik-sigmoid.png}
-    \caption{Grafik \emph{Activation function Sigmoid}}
-    \label{fig:sigmoid_function}
+    \includegraphics[scale=0.6]{gambar/bab2-grafik-sigmoid.png}
+  \caption{Grafik \emph{Activation function Sigmoid}}
+  \label{fig:sigmoid_function}
   \end{figure}
 
-  \begin{figure}[H]
+  \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.8]{gambar/bab2-grafik-tanh.png}
+    \includegraphics[scale=1]{gambar/bab2-grafik-tanh.png}
     \caption{Grafik \emph{Activation function Tanh}}
     \label{fig:tanh_function}
   \end{figure}
 
-  \begin{figure}[H]
+  \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.5]{gambar/bab2-grafik-relu.png}
     \caption{Grafik \emph{Activation function ReLU}}
@@ -175,7 +282,7 @@ dimana \( f \) adalah fungsi aktivasi, \( w \cdot x \) adalah \emph{dot product}
  \subsubsection{\emph{Backpropagation}}
  \emph{Backpropagation} adalah metode yang digunakan untuk memperbarui bobot jaringan dengan cara mengoptimalkan fungsi kerugian. Proses ini melibatkan penghitungan gradien fungsi kerugian terhadap setiap bobot di jaringan dengan menggunakan aturan rantai, dan secara iteratif mengatur ulang bobot untuk meminimalkan \emph{loss}.
  
- \begin{figure}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.6]{gambar/bab2-ff-backprop.png}
   \caption{Perbedaan antara \emph{Feed Forward} dan \emph{Backpropagation}}
@@ -184,7 +291,7 @@ dimana \( f \) adalah fungsi aktivasi, \( w \cdot x \) adalah \emph{dot product}
 
  \subsubsection{\emph{Loss Function} dan \emph{Optimizer}}
  \emph{Loss function} mengukur seberapa baik model NN melakukan prediksi dibandingkan dengan nilai sebenarnya. \emph{Loss function} yang umum meliputi:
- \begin{itemize}
+ \begin{itemize}[nolistsep]
    \item \textbf{\emph{Gradient Descent}}: Metode optimisasi yang digunakan untuk meminimalkan fungsi kerugian dengan mengupdate bobot jaringan berdasarkan gradien fungsi kerugian.
    \item \textbf{\emph{Stochastic Gradient Descent} (SGD)}: Versi sederhana dari \emph{Gradient Descent} yang memperbarui bobot jaringan berdasarkan gradien dari satu sampel data.
    \item \textbf{\emph{Momentum}}: Metode optimisasi yang membantu percepatan konvergensi dengan menambahkan momentum pada proses \emph{Gradient Descent}.
@@ -196,7 +303,7 @@ dimana \( f \) adalah fungsi aktivasi, \( w \cdot x \) adalah \emph{dot product}
  
  \subsubsection{CNN (\emph{Convolutional Neural Network})}
  CNN (\emph{Convolutional Neural Networks}) memperluas konsep NN dengan memasukkan lapisan konvolusi, yang menggunakan filter untuk mengekstraksi fitur spatial dari data \emph{input}. Berikut merupakan beberapa konsep dasar dalam CNN:
- \begin{itemize}
+ \begin{itemize}[nolistsep] 
    \item \textbf{\emph{Convolutional Layer}}: Menggunakan filter atau \emph{kernel} yang 'meluncur' di atas gambar untuk menghasilkan \emph{feature map}.
    \item \textbf{\emph{Stride}}: Jumlah piksel yang dilewati filter pada setiap gerakan. Stride yang lebih besar menghasilkan \emph{feature map} yang lebih kecil.
    \item \textbf{\emph{Padding}}: Penambahan piksel di sekitar input untuk memungkinkan filter beroperasi di tepi gambar.
@@ -226,6 +333,63 @@ SSD menggunakan \emph{multi-scale feature maps} untuk mendeteksi objek pada berb
 
 SSD telah terbukti efektif dalam deteksi objek pada berbagai \emph{dataset}, termasuk PASCAL VOC dan COCO. Keunggulan utama SSD adalah kemampuannya untuk melakukan deteksi objek secara cepat dan akurat dalam satu langkah. Dalam penelitian ini, SSD digunakan sebagai model deteksi untuk mengidentifikasi kendaraan overdimensi pada video pengamatan jalan raya.
 
+\subsection{\emph{Metrics} untuk Evaluasi Model}
+
+Dalam evaluasi performa model deteksi objek, metrik seperti \emph{Precision}, \emph{Recall}, \emph{Average Precision (AP)}, dan \emph{Mean Average Precision (mAP)} digunakan untuk mengukur seberapa baik model dalam mengenali dan mengklasifikasikan objek dalam citra.
+
+\subsubsection{\emph{Precision} dan \emph{Recall}}
+
+\emph{Precision} mengukur proporsi prediksi positif yang benar dari semua prediksi positif yang dibuat oleh model, sedangkan \emph{Recall} mengukur proporsi deteksi yang benar dari seluruh objek yang seharusnya terdeteksi. \emph{Precision} dan \emph{Recall} dihitung dengan rumus berikut:
+
+\begin{equation}
+\mbox{Precision} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FP}}
+\label{eq:precision}
+\end{equation}
+
+\begin{equation}
+\mbox{Recall} = \frac{\mbox{TP}}{\mbox{TP} + \mbox{FN}}
+\label{eq:recall}
+\end{equation}
+
+di mana TP (True Positive) adalah jumlah deteksi yang benar, FP (False Positive) adalah jumlah deteksi yang salah, dan FN (False Negative) adalah jumlah objek yang tidak terdeteksi \parencite*{padilla2020survey}.
+
+\subsubsection{\emph{Average Precision} (AP)}
+
+\emph{Average Precision (AP)} adalah metrik yang menggabungkan precision dan recall untuk satu kelas objek. AP dihitung sebagai area di bawah kurva \emph{Precision-Recall} (PR), yang dapat dihitung dengan pendekatan diskrit sebagai:
+
+\begin{equation}
+\mbox{AP} = \sum_{k=1}^{n} P(k) \Delta r(k)
+\label{eq:AP}
+\end{equation}
+
+di mana $P(k)$ adalah \emph{precision} pada threshold ke-$k$, dan $\Delta r(k)$ adalah perubahan \emph{recall} antara \emph{threshold} ke-$(k-1)$ dan ke-$k$. Metrik ini memberikan pemahaman yang lebih dalam tentang performa deteksi terhadap satu kelas objek \parencite*{oksuz2018localization}.
+
+\subsubsection{\emph{Mean Average Precision} (mAP)}
+
+\emph{Mean Average Precision (mAP)} adalah rata-rata dari AP untuk semua kelas dalam dataset. mAP banyak digunakan dalam benchmark seperti PASCAL VOC dan COCO untuk mengevaluasi kinerja menyeluruh dari sistem deteksi objek. Persamaan mAP yaitu:
+
+\begin{equation}
+\mbox{mAP} = \frac{1}{N} \sum_{i=1}^{N} \mbox{AP}_i
+\label{eq:mAP}
+\end{equation}
+
+di mana $N$ adalah jumlah kelas dan $\mbox{AP}_i$ adalah nilai \emph{Average Precision} untuk kelas ke-$i$ \parencite*{padilla2020survey, oksuz2018localization}.
+
+\subsection{\emph{Inference Time} dan FPS (\emph{Frames Per Second})}
+
+Dalam konteks sistem deteksi berbasis \emph{deep learning}, dua metrik utama yang sering digunakan untuk mengukur performa sistem adalah \emph{inference time} dan \emph{frames per second} (FPS). \emph{Inference time} merujuk pada waktu yang dibutuhkan oleh model untuk memproses satu data input (misalnya satu citra) hingga menghasilkan keluaran. Sebaliknya, FPS mengacu pada jumlah \emph{frame} yang dapat diproses oleh sistem dalam satu detik. Kedua metrik ini saling berkaitan secara matematis dan sering kali digunakan secara bergantian untuk menilai kecepatan sistem dalam konteks \emph{real-time}.
+
+Secara umum, hubungan antara keduanya dapat dinyatakan sebagai:
+\begin{equation}
+  \mbox{FPS} = \frac{1}{\mbox{Waktu Inferensi}}
+  \label{eq:fps_inference_time}
+\end{equation}
+Artinya, semakin kecil waktu inferensi, semakin banyak \emph{frame} yang dapat diproses dalam satu detik, sehingga nilai FPS menjadi lebih tinggi.
+
+Menurut Han et al. \parencite*{Canziani2016An} dalam studinya mengenai analisis model jaringan saraf dalam untuk aplikasi praktis, ditemukan bahwa terdapat hubungan hiperbolik antara akurasi dan waktu inferensi, yang menunjukkan bahwa peningkatan akurasi model sering kali disertai dengan peningkatan waktu inferensi, dan akibatnya menurunkan nilai FPS. Oleh karena itu, terdapat \emph{trade-off} yang perlu dipertimbangkan antara kecepatan pemrosesan dan akurasi model dalam pengembangan sistem berbasis visi komputer \emph{real-time}, terutama untuk aplikasi pada perangkat terbatas atau \emph{edge device}.
+
+Studi ini juga menegaskan pentingnya pemilihan arsitektur model yang tepat untuk mencapai keseimbangan antara efisiensi dan performa. Dalam aplikasi seperti sistem \emph{real-time} atau deteksi objek bergerak, nilai FPS yang tinggi sangat diperlukan agar sistem dapat merespons secara tepat waktu terhadap perubahan lingkungan visual secara dinamis.
+
 \subsection{\emph{Edge Computing}}
 
 \emph{Edge computing} adalah paradigma komputasi yang memungkinkan pemrosesan data dilakukan di dekat sumber data, seperti perangkat \emph{IoT} (\emph{Internet of Things}) atau sensor. Hal ini bertentangan dengan komputasi tradisional yang memerlukan pengiriman data ke pusat data atau cloud untuk diproses. \emph{Edge computing} memungkinkan pemrosesan data yang lebih cepat, responsif, dan efisien dengan memanfaatkan sumber daya lokal.
@@ -234,42 +398,123 @@ Keuntungan utama dari \emph{edge computing} adalah kemampuannya untuk mengurangi
 
 Selain itu, \emph{edge computing} juga membantu mengurangi beban jaringan dan \emph{cloud} dengan melakukan pemrosesan data secara lokal. Hal ini dapat mengurangi biaya operasional dan meningkatkan efisiensi sistem secara keseluruhan. Dalam konteks penelitian ini, \emph{edge computing} digunakan untuk menjalankan model deteksi objek secara \emph{real-time} pada perangkat lokal tanpa memerlukan koneksi internet. 
 
-Contoh implementasi edge computing yang digunakan dalam penelitian ini adalah Jetson Nano dan Beelink Gemini T34 yang berfungsi sebagai \emph{edge device} untuk menjalankan model deteksi objek secara \emph{real-time}.
+Contoh implementasi \emph{edge computing} yang digunakan dalam penelitian ini adalah Jetson Nano dan Beelink Gemini T34 yang berfungsi sebagai \emph{edge device} untuk menjalankan model deteksi objek secara \emph{real-time}.
 
 \subsubsection{Jetson Nano}
 
- \begin{figure}[H]
+ \begin{figure}[htbp]
   \centering
-  \includegraphics[scale=0.7]{gambar/bab2-jetson-nano.png}
+  \includegraphics[scale=0.5]{gambar/bab2-jetson-nano.png}
   \caption{Jetson Nano Developer Kit}
   \label{fig:jetsonnano}
 \end{figure}
 
 Jetson Nano adalah perangkat komputasi keluaran NVIDIA yang didedikasikan dalam pengembangan \textit{machine learning} dan \emph{edge computing}. Jetson Nano memiliki kemampuan untuk dapat menjalankan beberapa \emph{neural networks} secara paralel. Kemampuan ini memungkinkan Jetson Nano untuk digunakan dalam \textit{image classification}, \textit{object detection}, \textit{segmentation}, dan \textit{speech processing} \parencite{nvidiaJetsonNano}. Perangkat ini dapat menjadi solusi dalam menjalankan model \textit{machine learning} atau \textit{deep learning} pada perangkat portable dan hemat energi. 
 
-Perangkat ini dilengkapi dengan 128 NVIDIA CUDA \emph{cores}. Ditenagai oleh prosesor \emph{Quad-core ARM Cortex-A57 MPCore}, platform ini menyediakan fungsionalitas komputasi yang solid dengan memori 4 GB 64-bit LPDDR4 yang beroperasi pada 1600MHz, memberikan \emph{bandwidth} 25.6 GB/s. Untuk penyimpanan, Jetson Nano dilengkapi dengan 16 GB eMMC 5.1, yang memberikan ruang yang cukup untuk aplikasi dan data pengguna. Jetson Nano dapat mengkodekan video dengan kecepatan 250MP/sec, mendukung format seperti 1x 4K pada 30fps (HEVC), 2x 1080p pada 60fps (HEVC), dan sebagainya. Sementara itu, untuk decode video, perangkat ini menawarkan kemampuan hingga 500MP/sec, dengan dukungan untuk format seperti 1x 4K pada 60fps (HEVC) dan 2x 4K pada 30fps (HEVC). Jetson Nano juga dilengkapi dengan 12 jalur kamera (3x4 atau 4x2) MIPI CSI-2 D-PHY 1.1, yang mendukung kecepatan hingga 1.5 Gb/s per pasangan, memberikan fleksibilitas dalam pengembangan aplikasi berbasis kamera. Dalam hal konektivitas, perangkat ini menawarkan Gigabit Ethernet dan M.2 Key E, serta kemampuan tampilan melalui HDMI 2.0 dan eDP 1.4. Jetson Nano juga dilengkapi dengan 4x USB 3.0 dan USB 2.0 Micro-B, serta berbagai opsi konektivitas lainnya seperti GPIO, I2C, I2S, SPI, dan UART, semuanya dalam form factor mekanis 69.6 mm x 45 mm dengan konektor tepi 260-pin \parencite{nvidiaJetsonNano}.
+Perangkat ini dilengkapi dengan 128 NVIDIA CUDA \emph{cores}. Ditenagai oleh prosesor \emph{Quad-core ARM Cortex-A57 MPCore}, \emph{platform} ini menyediakan fungsionalitas komputasi yang solid dengan memori 4 GB 64-bit LPDDR4 yang beroperasi pada 1600MHz, memberikan \emph{bandwidth} 25.6 GB/s. Untuk penyimpanan, Jetson Nano dilengkapi dengan 16 GB eMMC 5.1, yang memberikan ruang yang cukup untuk aplikasi dan data pengguna. Jetson Nano dapat mengkodekan video dengan kecepatan 250MP/sec, mendukung format seperti 1x 4K pada 30fps (HEVC), 2x 1080p pada 60fps (HEVC), dan sebagainya. Sementara itu, untuk \emph{decode} video, perangkat ini menawarkan kemampuan hingga 500MP/sec, dengan dukungan untuk format seperti 1x 4K pada 60fps (HEVC) dan 2x 4K pada 30fps (HEVC). Jetson Nano juga dilengkapi dengan 12 jalur kamera (3x4 atau 4x2) MIPI CSI-2 D-PHY 1.1, yang mendukung kecepatan hingga 1.5 Gb/s per pasangan, memberikan fleksibilitas dalam pengembangan aplikasi berbasis kamera. Dalam hal konektivitas, perangkat ini menawarkan Gigabit Ethernet dan M.2 Key E, serta kemampuan tampilan melalui HDMI 2.0 dan eDP 1.4. Jetson Nano juga dilengkapi dengan 4x USB 3.0 dan USB 2.0 Micro-B, serta berbagai opsi konektivitas lainnya seperti GPIO, I2C, I2S, SPI, dan UART, semuanya dalam \emph{form factor} mekanis 69.6 mm x 45 mm dengan konektor tepi 260-pin \parencite{nvidiaJetsonNano}.
 
 \subsubsection{Beelink Gemini T34}
- \begin{figure}[H]
+ \begin{figure}[htbp]
      \centering
-     \includegraphics[scale=0.6]{gambar/bab2-beelink-gemini-t34.png}
+     \includegraphics[scale=0.5]{gambar/bab2-beelink-gemini-t34.png}
      \caption{Beelink Gemini T34}
      \label{fig:beelinkgeminit34}
 \end{figure}
 
-Beelink Gemini T34 adalah mini PC yang dilengkapi dengan prosesor Intel Apollo Lake N3450. Prosesor ini memiliki 4 core dan 4 thread dengan kecepatan hingga 2.2 GHz. Beelink Gemini T34 juga dilengkapi dengan Intel HD Graphics 500 yang mendukung resolusi hingga 4K. Mini PC ini memiliki RAM 8 GB LPDDR3 dan penyimpanan 128 GB eMMC SSD. Beelink Gemini T34 memiliki berbagai port konektivitas seperti HDMI, USB 3.0, USB 2.0, dan Gigabit Ethernet. Mini PC ini juga dilengkapi dengan konektivitas Wi-Fi 5 dan Bluetooth 4.0. Beelink Gemini T34 memiliki dimensi 11.9 cm x 11.9 cm x 1.79 cm dan berat 0.4 kg, sehingga mudah dipindahkan dan ditempatkan di berbagai lokasi. \parencite*{beelinkGeminiT34}
+Beelink Gemini T34 adalah mini PC yang dilengkapi dengan prosesor Intel Apollo Lake N3450. Prosesor ini memiliki 4 \emph{core} dan 4 \emph{thread} dengan kecepatan hingga 2.2 GHz. Beelink Gemini T34 juga dilengkapi dengan Intel HD Graphics 500 yang mendukung resolusi hingga 4K. Mini PC ini memiliki RAM 8 GB LPDDR3 dan penyimpanan 128 GB eMMC SSD. Beelink Gemini T34 memiliki berbagai port konektivitas seperti HDMI, USB 3.0, USB 2.0, dan Gigabit Ethernet. Mini PC ini juga dilengkapi dengan konektivitas Wi-Fi 5 dan Bluetooth 4.0. Beelink Gemini T34 memiliki dimensi 11.9 cm x 11.9 cm x 1.79 cm dan berat 0.4 kg, sehingga mudah dipindahkan dan ditempatkan di berbagai lokasi. \parencite*{beelinkGeminiT34}
 
-Beelink Gemini T34 dapat digunakan sebagai \emph{edge device} untuk menjalankan model deteksi objek secara \emph{real-time}. Mini PC ini memiliki performa yang cukup untuk menjalankan aplikasi deteksi objek dengan akurasi tinggi dan latensi rendah. Dengan konektivitas Wi-Fi dan Bluetooth, Beelink Gemini T34 dapat terhubung ke jaringan lokal dan perangkat lain untuk mentransfer data deteksi objek. Dengan demikian, Beelink Gemini T34 merupakan solusi yang ideal untuk implementasi \emph{edge computing} dalam deteksi objek pada video pengamatan jalan raya.
+Beelink Gemini T34 dapat digunakan sebagai \emph{edge device} untuk menjalankan model deteksi objek secara \emph{real-time}. Mini PC ini memiliki performa yang cukup untuk menjalankan aplikasi deteksi objek dengan akurasi tinggi dan latensi rendah. Dengan konektivitas Wi-Fi dan Bluetooth, Beelink Gemini T34 dapat terhubung ke jaringan lokal dan perangkat lain untuk mentransfer data deteksi objek.
 
-% \subsection{MQTT (\emph{Message Queuing Telemetry Transport})}
+\begin{table}[htbp]
+  \centering
+  \caption{Perbandingan Spesifikasi Jetson Nano dan Beelink Gemini T34}
+  \label{tab:perbandingan_edge_device}
+  \begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+    \hline
+    \textbf{Spesifikasi} & \textbf{Jetson Nano} & \textbf{Beelink Gemini T34} \\
+    \hline
+    Prosesor & Quad-core ARM Cortex-A57 MPCore & Intel Apollo Lake N3450 (4 core, 4 thread) \\
+    \hline
+    GPU & 128 NVIDIA CUDA \emph{cores} & Intel HD Graphics 500 \\
+    \hline
+    RAM & 4 GB 64-bit LPDDR4 (25.6 GB/s) & 8 GB LPDDR3 \\
+    \hline
+    Penyimpanan & 16 GB eMMC 5.1 & 128 GB eMMC SSD \\
+    \hline
+    Kemampuan Video & \begin{itemize}[nolistsep]
+      \item \emph{Encode}: 250MP/sec
+      \item \emph{Decode}: 500MP/sec
+      \item 4K @ 30fps (HEVC)
+    \end{itemize} & \begin{itemize}[nolistsep]
+      \item Mendukung resolusi 4K
+      \item Hardware decoding
+    \end{itemize} \\
+    \hline
+    Konektivitas & \begin{itemize}[nolistsep]
+      \item Gigabit Ethernet
+      \item 4x USB 3.0
+      \item HDMI 2.0
+      \item GPIO, I2C, I2S, SPI
+    \end{itemize} & \begin{itemize}[nolistsep]
+      \item Gigabit Ethernet
+      \item USB 3.0, USB 2.0
+      \item HDMI
+      \item Wi-Fi 5
+      \item Bluetooth 4.0
+    \end{itemize} \\
+    \hline
+    Dimensi & 69.6 mm x 45 mm & 119 mm x 119 mm x 17.9 mm \\
+    \hline
+    Keunggulan untuk AI & \begin{itemize}[nolistsep]
+      \item CUDA \emph{cores} untuk akselerasi AI
+      \item Optimasi untuk \emph{deep learning}
+      \item Dukungan \emph{framework} AI
+    \end{itemize} & \begin{itemize}[nolistsep]
+      \item CPU x86 standar
+      \item Kompatibilitas \emph{software} lebih luas
+      \item Penyimpanan lebih besar
+    \end{itemize} \\
+    \hline
+  \end{tabular}
+\end{table}
 
-% MQTT (\emph{Message Queuing Telemetry Transport}) adalah protokol komunikasi yang ringan dan efisien untuk pertukaran pesan antara perangkat. MQTT dirancang untuk digunakan dalam kondisi jaringan yang tidak stabil atau berkapasitas rendah, seperti pada perangkat IoT atau \emph{edge device}.
+Kedua perangkat memiliki keunggulan masing-masing sebagai \emph{edge device}. Jetson Nano unggul dalam kemampuan pemrosesan AI berkat CUDA \emph{cores}-nya, sementara Beelink Gemini T34 menawarkan fleksibilitas lebih tinggi dengan arsitektur x86 dan penyimpanan yang lebih besar. Pemilihan antara keduanya dapat disesuaikan dengan kebutuhan spesifik implementasi sistem.
 
-% MQTT menggunakan model \emph{publish-subscribe} yang memungkinkan perangkat untuk berkomunikasi secara asinkron. Dalam model ini, perangkat yang mengirim pesan disebut \emph{publisher}, sedangkan perangkat yang menerima pesan disebut \emph{subscriber}. Pesan dikirim ke topik tertentu dan dapat diterima oleh satu atau lebih \emph{subscriber} yang berlangganan topik tersebut.
+\subsection{\emph{Quality of Service}}
 
-% Keunggulan utama dari MQTT adalah kemampuannya untuk mengirim pesan secara efisien dan andal di berbagai kondisi jaringan. MQTT menggunakan protokol TCP/IP yang ringan dan memiliki overhead yang rendah, sehingga cocok untuk digunakan pada perangkat dengan sumber daya terbatas. Selain itu, MQTT juga mendukung koneksi yang tahan lama dan \emph{quality of service} (QoS) yang dapat disesuaikan.
+Kualitas Layanan atau \emph{Quality of Service} (QoS) didefinisikan sebagai suatu mekanisme pada jaringan komputer yang memungkinkan penyediaan layanan yang berbeda untuk kelas-kelas aplikasi yang berbeda pula. Dalam konteks jaringan internet, QoS merujuk pada kemampuan jaringan untuk menyediakan layanan yang lebih baik untuk trafik tertentu dibandingkan dengan trafik lainnya. Tujuan utama dari implementasi QoS adalah untuk mencapai tingkat performa jaringan yang dapat diprediksi dan dijamin, terutama untuk aplikasi-aplikasi yang sensitif terhadap kualitas jaringan seperti \emph{streaming video}, \emph{voice over IP} (VoIP), dan \emph{online gaming}.
 
-% Dalam penelitian ini, MQTT digunakan sebagai protokol komunikasi antara \emph{edge device} dan \emph{cloud} untuk mentransfer data deteksi objek secara \emph{real-time}. MQTT memungkinkan perangkat untuk berkomunikasi secara efisien dan responsif tanpa memerlukan koneksi internet yang stabil. \parencite*{mqtts2008}
+Parameter-parameter yang umum digunakan untuk mengukur QoS, sebagaimana disebutkan sebelumnya, meliputi:
+
+\begin{itemize}
+    \item \textbf{\emph{Throughput}}: Mengacu pada laju transfer data efektif yang berhasil dikirimkan melalui suatu jalur komunikasi dalam satuan waktu tertentu, biasanya diukur dalam bit per detik (bps) atau kelipatannya (kbps, Mbps). Persamaan \ref{eq:throughput} digunakan untuk menghitung \emph{throughput}.
+    \begin{equation}
+      \label{eq:throughput}
+      \mbox{Throughput} = \frac{\mbox{Jumlah Data yang dikirim}}{\mbox{Waktu pengiriman data}}
+    \end{equation}
+    \item \textbf{\emph{Packet Loss}}: Merupakan persentase paket data yang hilang atau gagal mencapai tujuan selama proses transmisi. Kehilangan paket dapat disebabkan oleh berbagai faktor seperti kongesti jaringan, \emph{error} pada media transmisi, atau \emph{buffer overflow} pada perangkat jaringan. Persamaan \ref{eq:packetloss} digunakan untuk menghitung \emph{packet loss}.
+    \begin{equation}
+      \label{eq:packetloss}
+      \mbox{Packet Loss} = \frac{\mbox{(Paket data dikirim - Paket data diterima)}}{\mbox{Paket data dikirim} * 100\%}
+    \end{equation}
+    \item \textbf{\emph{Delay (Latency)}}: Adalah total waktu yang dibutuhkan oleh sebuah paket data untuk menempuh perjalanan dari titik asal ke titik tujuan. \emph{Delay} terdiri dari beberapa komponen, termasuk \emph{\emph{propagation delay}}, \emph{\emph{transmission delay}}, \emph{\emph{processing delay}}, dan \emph{\emph{queuing delay}}. Persamaan \ref{eq:delay} digunakan untuk menghitung \emph{delay}.
+    \begin{equation}
+      \label{eq:delay}
+      \mbox{Delay} = \frac{\mbox{Total paket delay}}{\mbox{Total paket yang diterima}}
+    \end{equation}
+    \item \textbf{\emph{Jitter}}: Didefinisikan sebagai variasi atau fluktuasi dalam \emph{delay} antar paket yang diterima secara berurutan. \emph{Jitter} yang tinggi dapat berdampak negatif pada kualitas aplikasi \emph{real-time} seperti audio dan video. Persamaan \ref{eq:jitter} digunakan untuk menghitung \emph{jitter}.
+    \begin{equation}
+      \label{eq:jitter}
+      \mbox{Jitter} = \frac{\mbox{Total variasi delay}}{\mbox{Total paket yang diterima}}
+    \end{equation}
+    dimana untuk mencari total variasi \emph{delay}, dapat menggunakan persamaan \ref{eq:totalvariasidelay}:
+    \begin{equation}
+      \label{eq:totalvariasidelay}
+      \mbox{Total variasi delay} = \sum_{i=1}^{n-1} (D_{i+1} - D_i)
+    \end{equation}
+\end{itemize}
+
+Pentingnya pengukuran \emph{QoS}, terutama pada jaringan nirkabel seperti WiFi, ditekankan karena sifat medium transmisinya yang lebih rentan terhadap gangguan. Faktor-faktor eksternal seperti kondisi cuaca, interferensi dari gelombang elektromagnetik lain, serta halangan fisik dapat secara signifikan mempengaruhi stabilitas dan kualitas transmisi data pada jaringan WiFi, yang pada gilirannya akan berdampak pada parameter-parameter \emph{QoS}. Oleh karena itu, pemantauan dan pengelolaan \emph{QoS} menjadi krusial untuk memastikan pengalaman pengguna yang optimal pada berbagai jenis layanan jaringan. \parencite*{hariesanom2024}
 
 \subsection{RESTful API}
 
@@ -285,17 +530,17 @@ RESTful API menggunakan 4 metode HTTP utama untuk berinteraksi dengan \emph{reso
 
 RESTful API menggunakan URI (\emph{Uniform Resource Identifier}) untuk mengidentifikasi sumber daya yang diakses dan format data yang diinginkan. Data dikirimkan dalam format yang umum seperti JSON atau XML untuk memudahkan pertukaran data antara klien dan server. \parencite*{restapi2016}
 
-Keunggulan utama dari RESTful API adalah kemudahan penggunaan, fleksibilitas, dan skalabilitas. RESTful API memungkinkan pengembang untuk membangun layanan web yang dapat diakses dari berbagai platform dan bahasa pemrograman. Dalam penelitian ini, RESTful API digunakan untuk mengintegrasikan antara aplikasi Flutter dengan \emph{cloud} untuk mentransfer data deteksi objek secara \emph{real-time}.
+Keunggulan utama dari RESTful API adalah kemudahan penggunaan, fleksibilitas, dan skalabilitas. RESTful API memungkinkan pengembang untuk membangun layanan \emph{web} yang dapat diakses dari berbagai \emph{platform} dan bahasa pemrograman. Dalam penelitian ini, RESTful API digunakan untuk mengintegrasikan antara aplikasi Flutter dengan \emph{cloud} untuk mentransfer data deteksi objek secara \emph{real-time}.
 
 \subsection{Flutter}
 
 Flutter adalah \emph{framework} pengembangan aplikasi \emph{open-source} yang dikembangkan oleh \emph{Google} \parencite*{google2024}. Flutter memungkinkan pengembang untuk membuat aplikasi \emph{mobile} dengan antarmuka pengguna yang kaya dan responsif. Flutter menggunakan bahasa pemrograman Dart yang dikembangkan oleh Google sebagai bahasa utamanya.
 
-Keunggulan utama dari Flutter adalah kemampuannya untuk membuat aplikasi \emph{mobile} yang konsisten di berbagai platform, termasuk Android dan iOS. Flutter menggunakan \emph{widget} sebagai komponen dasar untuk membangun antarmuka pengguna. \emph{Widget} Flutter bersifat deklaratif, yang berarti pengembang mendefinisikan bagaimana antarmuka pengguna harus terlihat berdasarkan kondisi saat ini.
+Keunggulan utama dari Flutter adalah kemampuannya untuk membuat aplikasi \emph{mobile} yang konsisten di berbagai \emph{platform}, termasuk Android dan iOS. Flutter menggunakan \emph{widget} sebagai komponen dasar untuk membangun antarmuka pengguna. \emph{Widget} Flutter bersifat deklaratif, yang berarti pengembang mendefinisikan bagaimana antarmuka pengguna harus terlihat berdasarkan kondisi saat ini.
 
 Flutter juga menyediakan berbagai \emph{plugin} dan \emph{package} yang memperluas fungsionalitas aplikasi. Pengembang dapat menggunakan \emph{plugin} Flutter untuk mengakses fitur perangkat seperti kamera, lokasi, dan sensor. Selain itu, Flutter juga menyediakan \emph{package} untuk mengintegrasikan aplikasi dengan layanan \emph{cloud}, \emph{database}, dan API eksternal.
 
-Dalam penelitian ini, Flutter digunakan sebagai platform pengembangan aplikasi \emph{mobile} untuk menampilkan hasil deteksi objek secara \emph{real-time}. Aplikasi Flutter akan berkomunikasi dengan \emph{cloud} untuk menerima data deteksi objek dan menampilkannya dalam antarmuka pengguna yang responsif.
+Dalam penelitian ini, Flutter digunakan sebagai \emph{platform} pengembangan aplikasi \emph{mobile} untuk menampilkan hasil deteksi objek secara \emph{real-time}. Aplikasi Flutter akan berkomunikasi dengan \emph{cloud} untuk menerima data deteksi objek dan menampilkannya dalam antarmuka pengguna yang responsif.
 
 \subsection{PostgreSQL}
 
@@ -321,24 +566,41 @@ Keunggulan utama Express.js meliputi:
 
 \subsection{Apache HTTP Server}
 
-Apache HTTP Server (Apache2) adalah server web \emph{open-source} yang paling banyak digunakan di dunia. Apache2 dikembangkan dan dikelola oleh Apache Software Foundation dan mendukung berbagai platform sistem operasi. Server ini dikenal karena kehandalannya, fleksibilitas konfigurasi, dan ekosistem modul yang luas. \parencite*{apache2024}
+Apache HTTP Server (Apache2) adalah server web \emph{open-source} yang paling banyak digunakan di dunia. Apache2 dikembangkan dan dikelola oleh Apache Software Foundation dan mendukung berbagai \emph{platform} sistem operasi. Server ini dikenal karena kehandalannya, fleksibilitas konfigurasi, dan ekosistem modul yang luas. \parencite*{apache2024}
 
 Fitur utama Apache2 meliputi:
 \begin{itemize}[nolistsep]
-  \item \textbf{\emph{Virtual Hosting}}: Kemampuan untuk menjalankan beberapa situs web pada satu server.
-  \item \textbf{Modul Dinamis}: Mendukung penambahan dan penghapusan modul tanpa mengompilasi ulang server.
+  \item \textbf{\emph{Virtual Hosting}}: Kemampuan untuk menjalankan beberapa situs \emph{web} pada satu \emph{server}.
+  \item \textbf{Modul Dinamis}: Mendukung penambahan dan penghapusan modul tanpa mengompilasi ulang \emph{server}.
   \item \textbf{Keamanan}: Menyediakan fitur keamanan seperti SSL/TLS, autentikasi, dan otorisasi.
   \item \textbf{\emph{Reverse Proxy}}: Dapat berfungsi sebagai \emph{reverse proxy} untuk mendistribusikan beban dan meningkatkan keamanan.
 \end{itemize}
 
+Dalam penelitian ini, Apache2 digunakan sebagai \emph{server} untuk menjalankan aplikasi \emph{backend}. Apache2 akan memastikan bahwa aplikasi \emph{backend} dapat diakses publik dan siap menangani permintaan dari aplikasi Flutter.
+
 \subsection{PM2 (Process Manager 2)}
 
-PM2 adalah manajer proses untuk aplikasi Node.js yang memungkinkan pengembang untuk mengelola dan mempertahankan aplikasi tetap berjalan di lingkungan produksi. PM2 menyediakan fitur-fitur penting seperti load balancing, monitoring, dan manajemen log untuk memastikan ketersediaan dan kinerja aplikasi. \parencite*{pm22024}
+PM2 adalah manajer proses untuk aplikasi Node.js yang memungkinkan pengembang untuk mengelola dan mempertahankan aplikasi tetap berjalan di lingkungan produksi. PM2 menyediakan fitur-fitur penting seperti \emph{load balancing}, \emph{monitoring}, dan manajemen log untuk memastikan ketersediaan dan kinerja aplikasi. \parencite*{pm22024}
 
 Keunggulan utama PM2 meliputi:
 \begin{itemize}[nolistsep]
-  \item \textbf{\emph{Process Management}}: Kemampuan untuk menjalankan aplikasi dalam mode daemon, restart otomatis saat crash, dan update tanpa downtime.
-  \item \textbf{\emph{Load Balancing}}: Mendistribusikan beban di antara beberapa instance aplikasi untuk meningkatkan throughput.
-  \item \textbf{\emph{Monitoring}}: Menyediakan dashboard untuk memantau penggunaan CPU, memori, dan metrik lainnya secara real-time.
+  \item \textbf{\emph{Process Management}}: Kemampuan untuk menjalankan aplikasi dalam mode \emph{daemon}, \emph{restart} otomatis saat \emph{crash}, dan \emph{update} tanpa \emph{downtime}.
+  \item \textbf{\emph{Load Balancing}}: Mendistribusikan beban di antara beberapa instance aplikasi untuk meningkatkan \emph{throughput}.
+  \item \textbf{\emph{Monitoring}}: Menyediakan dashboard untuk memantau penggunaan \emph{CPU}, \emph{memory}, dan metrik lainnya secara \emph{real-time}.
   \item \textbf{\emph{Log Management}}: Mengelola dan merotasi file log untuk mencegah penggunaan disk yang berlebihan.
 \end{itemize}
+
+Dalam penelitian ini, PM2 digunakan untuk mengelola dan mempertahankan aplikasi \emph{backend} agar tetap berjalan di lingkungan produksi. PM2 akan memastikan bahwa aplikasi \emph{backend} tetap berjalan dan siap menangani permintaan dari aplikasi Flutter.
+
+\subsection{Cloudinary}
+
+Cloudinary adalah layanan \emph{cloud-based} untuk menyimpan, mengelola, dan mengirim media digital. Cloudinary menyediakan fitur-fitur untuk memudahkan pengembang dalam mengelola media digital seperti gambar, video, dan dokumen. \parencite*{cloudinary2024}
+
+Keunggulan utama Cloudinary meliputi:
+\begin{itemize}[nolistsep]
+  \item \textbf{\emph{Storage}}: Menyediakan penyimpanan media digital yang aman dan skalabel.
+  \item \textbf{\emph{Transformation}}: Menyediakan fitur untuk memanipulasi media digital seperti crop, resize, dan filter.
+  \item \textbf{\emph{Delivery}}: Menyediakan fitur untuk mengirim media digital ke berbagai \emph{platform} dan \emph{device}.
+\end{itemize}
+
+Dalam penelitian ini, Cloudinary digunakan untuk menyimpan dan mengirim gambar deteksi objek. Cloudinary akan memastikan bahwa gambar deteksi objek dapat disimpan tautannya di basis data PostgreSQL.
